@@ -1,43 +1,31 @@
 fileFormatVersion: 2
-guid: e0470153673527144bc6634de2ef9c2b
+guid: adda2d117025c724e9889ecb5187ed7d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8990226711589366698
-    second: TF_rolling_0
+      213: 7385678457208292420
+    second: redman_running_0
   - first:
-      213: -5189841105100866580
-    second: TF_rolling_1
+      213: 3588697297057101165
+    second: redman_running_1
   - first:
-      213: -5077301711249286680
-    second: TF_rolling_2
+      213: -3055039001622865720
+    second: redman_running_2
   - first:
-      213: 5498403701883337348
-    second: TF_rolling_3
+      213: 1369990852382471980
+    second: redman_running_3
   - first:
-      213: -6143104138928345720
-    second: TF_rolling_4
+      213: 4730673475428249528
+    second: redman_running_4
   - first:
-      213: -2856302046930949843
-    second: TF_rolling_5
+      213: -1802723331116673860
+    second: redman_running_5
   - first:
-      213: -7900480733072877367
-    second: TF_rolling_6
+      213: 2194044482506975163
+    second: redman_running_6
   - first:
-      213: 4069404842020107309
-    second: TF_rolling_7
-  - first:
-      213: 8998956921487943924
-    second: TF_rolling_8
-  - first:
-      213: -7576139909802184043
-    second: TF_rolling_9
-  - first:
-      213: 8473212943369471485
-    second: TF_rolling_10
-  - first:
-      213: -1386471581185580292
-    second: TF_rolling_11
+      213: -982310690530463663
+    second: redman_running_7
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -127,7 +115,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: TF_rolling_0
+      name: redman_running_0
       rect:
         serializedVersion: 2
         x: 0
@@ -141,14 +129,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aab238adf83b3cc70800000000000000
-      internalID: 8990226711589366698
+      spriteID: 444c7230d633f7660800000000000000
+      internalID: 7385678457208292420
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TF_rolling_1
+      name: redman_running_1
       rect:
         serializedVersion: 2
         x: 96
@@ -162,14 +150,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cebfdb9030bf9f7b0800000000000000
-      internalID: -5189841105100866580
+      spriteID: d653e7d8d2d9dc130800000000000000
+      internalID: 3588697297057101165
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TF_rolling_2
+      name: redman_running_2
       rect:
         serializedVersion: 2
         x: 192
@@ -183,14 +171,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8e9d08b8efcc989b0800000000000000
-      internalID: -5077301711249286680
+      spriteID: 8c81e4dd6325a95d0800000000000000
+      internalID: -3055039001622865720
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TF_rolling_3
+      name: redman_running_3
       rect:
         serializedVersion: 2
         x: 288
@@ -204,14 +192,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 48af27af8014e4c40800000000000000
-      internalID: 5498403701883337348
+      spriteID: c27bac5fb6f230310800000000000000
+      internalID: 1369990852382471980
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TF_rolling_4
+      name: redman_running_4
       rect:
         serializedVersion: 2
         x: 384
@@ -225,14 +213,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 88da1fc455f4fbaa0800000000000000
-      internalID: -6143104138928345720
+      spriteID: 8bf6343367ab6a140800000000000000
+      internalID: 4730673475428249528
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TF_rolling_5
+      name: redman_running_5
       rect:
         serializedVersion: 2
         x: 480
@@ -246,14 +234,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d29a571fb606c58d0800000000000000
-      internalID: -2856302046930949843
+      spriteID: cb45b7c7ea07bf6e0800000000000000
+      internalID: -1802723331116673860
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TF_rolling_6
+      name: redman_running_6
       rect:
         serializedVersion: 2
         x: 576
@@ -267,14 +255,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9c89f5eb1aadb5290800000000000000
-      internalID: -7900480733072877367
+      spriteID: bb7eb3115dfc27e10800000000000000
+      internalID: 2194044482506975163
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TF_rolling_7
+      name: redman_running_7
       rect:
         serializedVersion: 2
         x: 672
@@ -288,92 +276,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d24fcd7a42e697830800000000000000
-      internalID: 4069404842020107309
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TF_rolling_8
-      rect:
-        serializedVersion: 2
-        x: 768
-        y: 0
-        width: 96
-        height: 96
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4f8e45e34a7b2ec70800000000000000
-      internalID: 8998956921487943924
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TF_rolling_9
-      rect:
-        serializedVersion: 2
-        x: 864
-        y: 0
-        width: 96
-        height: 96
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 592b49364e42cd690800000000000000
-      internalID: -7576139909802184043
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TF_rolling_10
-      rect:
-        serializedVersion: 2
-        x: 960
-        y: 0
-        width: 96
-        height: 96
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: df587cb6746e69570800000000000000
-      internalID: 8473212943369471485
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TF_rolling_11
-      rect:
-        serializedVersion: 2
-        x: 1056
-        y: 0
-        width: 96
-        height: 96
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cf26248517342cce0800000000000000
-      internalID: -1386471581185580292
+      spriteID: 150fcd7a1a12e52f0800000000000000
+      internalID: -982310690530463663
       vertices: []
       indices: 
       edges: []
@@ -381,7 +285,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 0cd165147040a1d44875419a3e0f90c0
+    spriteID: 8b9944dc4f747ab4d83466c034aba25d
     internalID: 0
     vertices: []
     indices: 

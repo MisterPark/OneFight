@@ -1,43 +1,31 @@
 fileFormatVersion: 2
-guid: e0470153673527144bc6634de2ef9c2b
+guid: 6c86867bfd7ac5742bdbc9c234130a74
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8990226711589366698
-    second: TF_rolling_0
+      213: -7878215595630920020
+    second: redman_down_0
   - first:
-      213: -5189841105100866580
-    second: TF_rolling_1
+      213: -422236680656734214
+    second: redman_down_1
   - first:
-      213: -5077301711249286680
-    second: TF_rolling_2
+      213: -2317980305272087636
+    second: redman_down_2
   - first:
-      213: 5498403701883337348
-    second: TF_rolling_3
+      213: 5246357378936958420
+    second: redman_down_3
   - first:
-      213: -6143104138928345720
-    second: TF_rolling_4
+      213: -6651246033346943672
+    second: redman_down_4
   - first:
-      213: -2856302046930949843
-    second: TF_rolling_5
+      213: -6388834895029040403
+    second: redman_down_5
   - first:
-      213: -7900480733072877367
-    second: TF_rolling_6
+      213: 107608894454776509
+    second: redman_down_6
   - first:
-      213: 4069404842020107309
-    second: TF_rolling_7
-  - first:
-      213: 8998956921487943924
-    second: TF_rolling_8
-  - first:
-      213: -7576139909802184043
-    second: TF_rolling_9
-  - first:
-      213: 8473212943369471485
-    second: TF_rolling_10
-  - first:
-      213: -1386471581185580292
-    second: TF_rolling_11
+      213: 2767201530224822002
+    second: redman_down_7
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -127,7 +115,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: TF_rolling_0
+      name: redman_down_0
       rect:
         serializedVersion: 2
         x: 0
@@ -141,14 +129,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aab238adf83b3cc70800000000000000
-      internalID: 8990226711589366698
+      spriteID: caef97608a4faa290800000000000000
+      internalID: -7878215595630920020
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TF_rolling_1
+      name: redman_down_1
       rect:
         serializedVersion: 2
         x: 96
@@ -162,14 +150,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cebfdb9030bf9f7b0800000000000000
-      internalID: -5189841105100866580
+      spriteID: af7b05ed9f9e32af0800000000000000
+      internalID: -422236680656734214
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TF_rolling_2
+      name: redman_down_2
       rect:
         serializedVersion: 2
         x: 192
@@ -183,14 +171,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8e9d08b8efcc989b0800000000000000
-      internalID: -5077301711249286680
+      spriteID: cabd7eb8131e4dfd0800000000000000
+      internalID: -2317980305272087636
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TF_rolling_3
+      name: redman_down_3
       rect:
         serializedVersion: 2
         x: 288
@@ -204,14 +192,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 48af27af8014e4c40800000000000000
-      internalID: 5498403701883337348
+      spriteID: 4dd69406d3ecec840800000000000000
+      internalID: 5246357378936958420
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TF_rolling_4
+      name: redman_down_4
       rect:
         serializedVersion: 2
         x: 384
@@ -225,14 +213,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 88da1fc455f4fbaa0800000000000000
-      internalID: -6143104138928345720
+      spriteID: 84521a4f8f602b3a0800000000000000
+      internalID: -6651246033346943672
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TF_rolling_5
+      name: redman_down_5
       rect:
         serializedVersion: 2
         x: 480
@@ -246,14 +234,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d29a571fb606c58d0800000000000000
-      internalID: -2856302046930949843
+      spriteID: dea8c21338c4657a0800000000000000
+      internalID: -6388834895029040403
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TF_rolling_6
+      name: redman_down_6
       rect:
         serializedVersion: 2
         x: 576
@@ -267,14 +255,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9c89f5eb1aadb5290800000000000000
-      internalID: -7900480733072877367
+      spriteID: db246a828bd4e7100800000000000000
+      internalID: 107608894454776509
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TF_rolling_7
+      name: redman_down_7
       rect:
         serializedVersion: 2
         x: 672
@@ -288,92 +276,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d24fcd7a42e697830800000000000000
-      internalID: 4069404842020107309
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TF_rolling_8
-      rect:
-        serializedVersion: 2
-        x: 768
-        y: 0
-        width: 96
-        height: 96
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4f8e45e34a7b2ec70800000000000000
-      internalID: 8998956921487943924
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TF_rolling_9
-      rect:
-        serializedVersion: 2
-        x: 864
-        y: 0
-        width: 96
-        height: 96
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 592b49364e42cd690800000000000000
-      internalID: -7576139909802184043
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TF_rolling_10
-      rect:
-        serializedVersion: 2
-        x: 960
-        y: 0
-        width: 96
-        height: 96
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: df587cb6746e69570800000000000000
-      internalID: 8473212943369471485
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TF_rolling_11
-      rect:
-        serializedVersion: 2
-        x: 1056
-        y: 0
-        width: 96
-        height: 96
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cf26248517342cce0800000000000000
-      internalID: -1386471581185580292
+      spriteID: 2f6c7f66123176620800000000000000
+      internalID: 2767201530224822002
       vertices: []
       indices: 
       edges: []
@@ -381,7 +285,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 0cd165147040a1d44875419a3e0f90c0
+    spriteID: 5320b3fa0cb737e4a89e91bac9dcfc20
     internalID: 0
     vertices: []
     indices: 

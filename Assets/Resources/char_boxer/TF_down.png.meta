@@ -1,43 +1,37 @@
 fileFormatVersion: 2
-guid: e0470153673527144bc6634de2ef9c2b
+guid: f5062353497acdd459e86e340af6d68b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8990226711589366698
-    second: TF_rolling_0
+      213: 2843359692151235808
+    second: TF_down_0
   - first:
-      213: -5189841105100866580
-    second: TF_rolling_1
+      213: 5444588032333562332
+    second: TF_down_1
   - first:
-      213: -5077301711249286680
-    second: TF_rolling_2
+      213: -6394251332000008091
+    second: TF_down_2
   - first:
-      213: 5498403701883337348
-    second: TF_rolling_3
+      213: -3185157592306969812
+    second: TF_down_3
   - first:
-      213: -6143104138928345720
-    second: TF_rolling_4
+      213: 8574416588201212404
+    second: TF_down_4
   - first:
-      213: -2856302046930949843
-    second: TF_rolling_5
+      213: 7437168015003985276
+    second: TF_down_5
   - first:
-      213: -7900480733072877367
-    second: TF_rolling_6
+      213: -6527132876067616929
+    second: TF_down_6
   - first:
-      213: 4069404842020107309
-    second: TF_rolling_7
+      213: -8901928615654341550
+    second: TF_down_7
   - first:
-      213: 8998956921487943924
-    second: TF_rolling_8
+      213: -3983695929381068091
+    second: TF_down_8
   - first:
-      213: -7576139909802184043
-    second: TF_rolling_9
-  - first:
-      213: 8473212943369471485
-    second: TF_rolling_10
-  - first:
-      213: -1386471581185580292
-    second: TF_rolling_11
+      213: 8809107938493216327
+    second: TF_down_9
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -127,7 +121,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: TF_rolling_0
+      name: TF_down_0
       rect:
         serializedVersion: 2
         x: 0
@@ -141,14 +135,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aab238adf83b3cc70800000000000000
-      internalID: 8990226711589366698
+      spriteID: 0e4a6534394a57720800000000000000
+      internalID: 2843359692151235808
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TF_rolling_1
+      name: TF_down_1
       rect:
         serializedVersion: 2
         x: 96
@@ -162,14 +156,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cebfdb9030bf9f7b0800000000000000
-      internalID: -5189841105100866580
+      spriteID: cd1c59ff7ff0f8b40800000000000000
+      internalID: 5444588032333562332
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TF_rolling_2
+      name: TF_down_2
       rect:
         serializedVersion: 2
         x: 192
@@ -183,14 +177,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8e9d08b8efcc989b0800000000000000
-      internalID: -5077301711249286680
+      spriteID: 568329faa4e0347a0800000000000000
+      internalID: -6394251332000008091
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TF_rolling_3
+      name: TF_down_3
       rect:
         serializedVersion: 2
         x: 288
@@ -204,14 +198,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 48af27af8014e4c40800000000000000
-      internalID: 5498403701883337348
+      spriteID: c2397e4ab0c0cc3d0800000000000000
+      internalID: -3185157592306969812
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TF_rolling_4
+      name: TF_down_4
       rect:
         serializedVersion: 2
         x: 384
@@ -225,14 +219,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 88da1fc455f4fbaa0800000000000000
-      internalID: -6143104138928345720
+      spriteID: 4f933ff25727ef670800000000000000
+      internalID: 8574416588201212404
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TF_rolling_5
+      name: TF_down_5
       rect:
         serializedVersion: 2
         x: 480
@@ -246,14 +240,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d29a571fb606c58d0800000000000000
-      internalID: -2856302046930949843
+      spriteID: c75a535e7e0263760800000000000000
+      internalID: 7437168015003985276
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TF_rolling_6
+      name: TF_down_6
       rect:
         serializedVersion: 2
         x: 576
@@ -267,14 +261,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9c89f5eb1aadb5290800000000000000
-      internalID: -7900480733072877367
+      spriteID: f5747304b37fa65a0800000000000000
+      internalID: -6527132876067616929
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TF_rolling_7
+      name: TF_down_7
       rect:
         serializedVersion: 2
         x: 672
@@ -288,14 +282,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d24fcd7a42e697830800000000000000
-      internalID: 4069404842020107309
+      spriteID: 254c908a61ff57480800000000000000
+      internalID: -8901928615654341550
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TF_rolling_8
+      name: TF_down_8
       rect:
         serializedVersion: 2
         x: 768
@@ -309,14 +303,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4f8e45e34a7b2ec70800000000000000
-      internalID: 8998956921487943924
+      spriteID: 5c26214a8a117b8c0800000000000000
+      internalID: -3983695929381068091
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TF_rolling_9
+      name: TF_down_9
       rect:
         serializedVersion: 2
         x: 864
@@ -330,50 +324,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 592b49364e42cd690800000000000000
-      internalID: -7576139909802184043
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TF_rolling_10
-      rect:
-        serializedVersion: 2
-        x: 960
-        y: 0
-        width: 96
-        height: 96
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: df587cb6746e69570800000000000000
-      internalID: 8473212943369471485
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TF_rolling_11
-      rect:
-        serializedVersion: 2
-        x: 1056
-        y: 0
-        width: 96
-        height: 96
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cf26248517342cce0800000000000000
-      internalID: -1386471581185580292
+      spriteID: 74636f55ffc304a70800000000000000
+      internalID: 8809107938493216327
       vertices: []
       indices: 
       edges: []
@@ -381,7 +333,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 0cd165147040a1d44875419a3e0f90c0
+    spriteID: e7dd8f278196bbd4cae9f4f97b571dc6
     internalID: 0
     vertices: []
     indices: 

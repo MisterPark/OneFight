@@ -1,91 +1,106 @@
 fileFormatVersion: 2
-guid: 502785859c7684c43aaa57484dcaf1bf
+guid: a8e8a04de5316d2448e8d4a03fbd0f10
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -641357676894510793
-    second: TF_attack1_0
+      213: -3334854714879566615
+    second: redman_skill_1_0
   - first:
-      213: 7041149267070080416
-    second: TF_attack1_1
+      213: -3982040027864864437
+    second: redman_skill_1_1
   - first:
-      213: 5056515080574108076
-    second: TF_attack1_2
+      213: 6724290703027798137
+    second: redman_skill_1_2
   - first:
-      213: -2904830972796146594
-    second: TF_attack1_3
+      213: 883605258628407736
+    second: redman_skill_1_3
   - first:
-      213: -6716284974261481538
-    second: TF_attack1_4
+      213: 7328999529650126993
+    second: redman_skill_1_4
   - first:
-      213: 6856510812099539408
-    second: TF_attack1_5
+      213: -8378581572079367187
+    second: redman_skill_1_5
   - first:
-      213: -7348827687305002342
-    second: TF_attack1_6
+      213: -273575707552833148
+    second: redman_skill_1_6
   - first:
-      213: 6485604141460314743
-    second: TF_attack1_7
+      213: 323881662439102635
+    second: redman_skill_1_7
   - first:
-      213: 7835611921966886037
-    second: TF_attack1_8
+      213: -8837051079460080508
+    second: redman_skill_1_8
   - first:
-      213: -1515954377925223262
-    second: TF_attack1_9
+      213: 3672965652801180432
+    second: redman_skill_1_9
   - first:
-      213: -1287990192360173208
-    second: TF_attack1_10
+      213: 7372254617768485890
+    second: redman_skill_1_10
   - first:
-      213: -2871819749067770084
-    second: TF_attack1_11
+      213: 2495560605545704558
+    second: redman_skill_1_11
   - first:
-      213: -8303641627378007654
-    second: TF_attack1_12
+      213: -1918620092283634532
+    second: redman_skill_1_12
   - first:
-      213: -6818756201891898867
-    second: TF_attack1_13
+      213: 1010010753630794911
+    second: redman_skill_1_13
   - first:
-      213: 6483079520030701707
-    second: TF_attack1_14
+      213: 6618804853654502604
+    second: redman_skill_1_14
   - first:
-      213: 7937730101264779974
-    second: TF_attack1_15
+      213: 2601780538181546152
+    second: redman_skill_1_15
   - first:
-      213: 67891419861692846
-    second: TF_attack1_16
+      213: 3988843587934851972
+    second: redman_skill_1_16
   - first:
-      213: -8684286930460017981
-    second: TF_attack1_17
+      213: -3889326728086399238
+    second: redman_skill_1_17
   - first:
-      213: -2707159098635009916
-    second: TF_attack1_18
+      213: 6981101335630613723
+    second: redman_skill_1_18
   - first:
-      213: -7296729319710598628
-    second: TF_attack1_19
+      213: -4638835849257410449
+    second: redman_skill_1_19
   - first:
-      213: 4946459481809288558
-    second: TF_attack1_20
+      213: -5624549660421147159
+    second: redman_skill_1_20
   - first:
-      213: -9055701133903909204
-    second: TF_attack1_21
+      213: 8855887534974015701
+    second: redman_skill_1_21
   - first:
-      213: -8334210705407667442
-    second: TF_attack1_22
+      213: 1238561681801389181
+    second: redman_skill_1_22
   - first:
-      213: 1578564311250213623
-    second: TF_attack1_23
+      213: -4586322841239431910
+    second: redman_skill_1_23
   - first:
-      213: -4019924689497187494
-    second: TF_attack1_24
+      213: -6728220284251294971
+    second: redman_skill_1_24
   - first:
-      213: -5458001525251777235
-    second: TF_attack1_25
+      213: -6539367601712193769
+    second: redman_skill_1_25
   - first:
-      213: -6054641726104211186
-    second: TF_attack1_26
+      213: -7212838090024265247
+    second: redman_skill_1_26
   - first:
-      213: -6902290603880561587
-    second: TF_attack1_27
+      213: 4132291938159749811
+    second: redman_skill_1_27
+  - first:
+      213: -1054080730672429923
+    second: redman_skill_1_28
+  - first:
+      213: 6008717312662853549
+    second: redman_skill_1_29
+  - first:
+      213: 4990323409330892474
+    second: redman_skill_1_30
+  - first:
+      213: 5296759600805035472
+    second: redman_skill_1_31
+  - first:
+      213: 6003631331630251547
+    second: redman_skill_1_32
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -175,7 +190,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: TF_attack1_0
+      name: redman_skill_1_0
       rect:
         serializedVersion: 2
         x: 0
@@ -189,14 +204,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 731abb647907917f0800000000000000
-      internalID: -641357676894510793
+      spriteID: 9ec111e3e4738b1d0800000000000000
+      internalID: -3334854714879566615
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TF_attack1_1
+      name: redman_skill_1_1
       rect:
         serializedVersion: 2
         x: 96
@@ -210,14 +225,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0a5d63ae3ff27b160800000000000000
-      internalID: 7041149267070080416
+      spriteID: b496ab141b3fcb8c0800000000000000
+      internalID: -3982040027864864437
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TF_attack1_2
+      name: redman_skill_1_2
       rect:
         serializedVersion: 2
         x: 192
@@ -231,14 +246,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ca1860bdca95c2640800000000000000
-      internalID: 5056515080574108076
+      spriteID: 9700f6084ca715d50800000000000000
+      internalID: 6724290703027798137
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TF_attack1_3
+      name: redman_skill_1_3
       rect:
         serializedVersion: 2
         x: 288
@@ -252,14 +267,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e5ceee5ee97ffa7d0800000000000000
-      internalID: -2904830972796146594
+      spriteID: 8b1a63a1d42334c00800000000000000
+      internalID: 883605258628407736
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TF_attack1_4
+      name: redman_skill_1_4
       rect:
         serializedVersion: 2
         x: 384
@@ -273,14 +288,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ebfc9da7666fac2a0800000000000000
-      internalID: -6716284974261481538
+      spriteID: 1900dc3dd36d5b560800000000000000
+      internalID: 7328999529650126993
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TF_attack1_5
+      name: redman_skill_1_5
       rect:
         serializedVersion: 2
         x: 480
@@ -294,14 +309,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0d171d99148372f50800000000000000
-      internalID: 6856510812099539408
+      spriteID: deb439aa37c49bb80800000000000000
+      internalID: -8378581572079367187
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TF_attack1_6
+      name: redman_skill_1_6
       rect:
         serializedVersion: 2
         x: 576
@@ -315,14 +330,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a9241a67728b30a90800000000000000
-      internalID: -7348827687305002342
+      spriteID: 481232ce750143cf0800000000000000
+      internalID: -273575707552833148
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TF_attack1_7
+      name: redman_skill_1_7
       rect:
         serializedVersion: 2
         x: 672
@@ -336,14 +351,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 77a5b8dba9e710a50800000000000000
-      internalID: 6485604141460314743
+      spriteID: ba812fee7a8ae7400800000000000000
+      internalID: 323881662439102635
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TF_attack1_8
+      name: redman_skill_1_8
       rect:
         serializedVersion: 2
         x: 768
@@ -357,14 +372,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 59ce6a6378fadbc60800000000000000
-      internalID: 7835611921966886037
+      spriteID: 484bcca2ddc7c5580800000000000000
+      internalID: -8837051079460080508
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TF_attack1_9
+      name: redman_skill_1_9
       rect:
         serializedVersion: 2
         x: 864
@@ -378,14 +393,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2ac9110768f36fae0800000000000000
-      internalID: -1515954377925223262
+      spriteID: 013dc6f0dcef8f230800000000000000
+      internalID: 3672965652801180432
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TF_attack1_10
+      name: redman_skill_1_10
       rect:
         serializedVersion: 2
         x: 960
@@ -399,14 +414,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8615f2e7eb3202ee0800000000000000
-      internalID: -1287990192360173208
+      spriteID: 204e2d5d3828f4660800000000000000
+      internalID: 7372254617768485890
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TF_attack1_11
+      name: redman_skill_1_11
       rect:
         serializedVersion: 2
         x: 1056
@@ -420,14 +435,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c173ddd572f3528d0800000000000000
-      internalID: -2871819749067770084
+      spriteID: e6ca201162302a220800000000000000
+      internalID: 2495560605545704558
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TF_attack1_12
+      name: redman_skill_1_12
       rect:
         serializedVersion: 2
         x: 1152
@@ -441,14 +456,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a91ccf93fe983cc80800000000000000
-      internalID: -8303641627378007654
+      spriteID: c9cb18cf031bf55e0800000000000000
+      internalID: -1918620092283634532
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TF_attack1_13
+      name: redman_skill_1_13
       rect:
         serializedVersion: 2
         x: 1248
@@ -462,14 +477,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d0add389c59ee51a0800000000000000
-      internalID: -6818756201891898867
+      spriteID: f94fc7ddd67440e00800000000000000
+      internalID: 1010010753630794911
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TF_attack1_14
+      name: redman_skill_1_14
       rect:
         serializedVersion: 2
         x: 1344
@@ -483,14 +498,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b883a02897688f950800000000000000
-      internalID: 6483079520030701707
+      spriteID: ccc35bb42f7badb50800000000000000
+      internalID: 6618804853654502604
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TF_attack1_15
+      name: redman_skill_1_15
       rect:
         serializedVersion: 2
         x: 1440
@@ -504,14 +519,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6ca00d0a87b782e60800000000000000
-      internalID: 7937730101264779974
+      spriteID: 8a0f5d95d916b1420800000000000000
+      internalID: 2601780538181546152
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TF_attack1_16
+      name: redman_skill_1_16
       rect:
         serializedVersion: 2
         x: 1536
@@ -525,14 +540,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ea1372cf2e231f000800000000000000
-      internalID: 67891419861692846
+      spriteID: 48393730c183b5730800000000000000
+      internalID: 3988843587934851972
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TF_attack1_17
+      name: redman_skill_1_17
       rect:
         serializedVersion: 2
         x: 1632
@@ -546,14 +561,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3cafc5e4c073b7780800000000000000
-      internalID: -8684286930460017981
+      spriteID: af65af482f5560ac0800000000000000
+      internalID: -3889326728086399238
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TF_attack1_18
+      name: redman_skill_1_18
       rect:
         serializedVersion: 2
         x: 1728
@@ -567,14 +582,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 480c467942d3e6ad0800000000000000
-      internalID: -2707159098635009916
+      spriteID: bdc84436daad1e060800000000000000
+      internalID: 6981101335630613723
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TF_attack1_19
+      name: redman_skill_1_19
       rect:
         serializedVersion: 2
         x: 1824
@@ -588,14 +603,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c1ad87ce75fccba90800000000000000
-      internalID: -7296729319710598628
+      spriteID: f602aa96f5b8f9fb0800000000000000
+      internalID: -4638835849257410449
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TF_attack1_20
+      name: redman_skill_1_20
       rect:
         serializedVersion: 2
         x: 1920
@@ -609,14 +624,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e6dfa15f0ba55a440800000000000000
-      internalID: 4946459481809288558
+      spriteID: 9e5bd0d42e591f1b0800000000000000
+      internalID: -5624549660421147159
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TF_attack1_21
+      name: redman_skill_1_21
       rect:
         serializedVersion: 2
         x: 2016
@@ -630,14 +645,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cae2e814ccfa35280800000000000000
-      internalID: -9055701133903909204
+      spriteID: 5d89fe4eace66ea70800000000000000
+      internalID: 8855887534974015701
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TF_attack1_22
+      name: redman_skill_1_22
       rect:
         serializedVersion: 2
         x: 2112
@@ -651,14 +666,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e031bec158fe65c80800000000000000
-      internalID: -8334210705407667442
+      spriteID: d74ae249941403110800000000000000
+      internalID: 1238561681801389181
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TF_attack1_23
+      name: redman_skill_1_23
       rect:
         serializedVersion: 2
         x: 2208
@@ -672,14 +687,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7fa9d23a0ef28e510800000000000000
-      internalID: 1578564311250213623
+      spriteID: a15d9aedcab1a50c0800000000000000
+      internalID: -4586322841239431910
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TF_attack1_24
+      name: redman_skill_1_24
       rect:
         serializedVersion: 2
         x: 2304
@@ -693,14 +708,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a5b92ba1bcb5638c0800000000000000
-      internalID: -4019924689497187494
+      spriteID: 503bf929c4f80a2a0800000000000000
+      internalID: -6728220284251294971
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TF_attack1_25
+      name: redman_skill_1_25
       rect:
         serializedVersion: 2
         x: 2400
@@ -714,14 +729,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d2dd3dfc7884144b0800000000000000
-      internalID: -5458001525251777235
+      spriteID: 71f1f3430df7f35a0800000000000000
+      internalID: -6539367601712193769
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TF_attack1_26
+      name: redman_skill_1_26
       rect:
         serializedVersion: 2
         x: 2496
@@ -735,14 +750,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e01fc41dd6799fba0800000000000000
-      internalID: -6054641726104211186
+      spriteID: 1e952bde8f9d6eb90800000000000000
+      internalID: -7212838090024265247
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TF_attack1_27
+      name: redman_skill_1_27
       rect:
         serializedVersion: 2
         x: 2592
@@ -756,8 +771,113 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d44ce2304432630a0800000000000000
-      internalID: -6902290603880561587
+      spriteID: 3bae83abf99d85930800000000000000
+      internalID: 4132291938159749811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: redman_skill_1_28
+      rect:
+        serializedVersion: 2
+        x: 2688
+        y: 0
+        width: 96
+        height: 96
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d948fa309272f51f0800000000000000
+      internalID: -1054080730672429923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: redman_skill_1_29
+      rect:
+        serializedVersion: 2
+        x: 2784
+        y: 0
+        width: 96
+        height: 96
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da752017f80436350800000000000000
+      internalID: 6008717312662853549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: redman_skill_1_30
+      rect:
+        serializedVersion: 2
+        x: 2880
+        y: 0
+        width: 96
+        height: 96
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: abeeb7f63b0314540800000000000000
+      internalID: 4990323409330892474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: redman_skill_1_31
+      rect:
+        serializedVersion: 2
+        x: 2976
+        y: 0
+        width: 96
+        height: 96
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ddbf922bced18940800000000000000
+      internalID: 5296759600805035472
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: redman_skill_1_32
+      rect:
+        serializedVersion: 2
+        x: 3072
+        y: 0
+        width: 96
+        height: 96
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1ef93433ee215350800000000000000
+      internalID: 6003631331630251547
       vertices: []
       indices: 
       edges: []
@@ -765,7 +885,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 6b6de8ebceb85bb48b40c213d53c5668
+    spriteID: f00b6bd591e8a9b4ba01d8604cb3551c
     internalID: 0
     vertices: []
     indices: 

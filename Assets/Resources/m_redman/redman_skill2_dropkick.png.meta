@@ -1,43 +1,37 @@
 fileFormatVersion: 2
-guid: e0470153673527144bc6634de2ef9c2b
+guid: 79ba9e35ad0f6a94385f06b1e68ffaa5
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8990226711589366698
-    second: TF_rolling_0
+      213: -4977798851079473000
+    second: redman_skill2_dropkick_0
   - first:
-      213: -5189841105100866580
-    second: TF_rolling_1
+      213: -6171289358976136660
+    second: redman_skill2_dropkick_1
   - first:
-      213: -5077301711249286680
-    second: TF_rolling_2
+      213: 7558463261399869713
+    second: redman_skill2_dropkick_2
   - first:
-      213: 5498403701883337348
-    second: TF_rolling_3
+      213: -715641366701829269
+    second: redman_skill2_dropkick_3
   - first:
-      213: -6143104138928345720
-    second: TF_rolling_4
+      213: -3573723548947024705
+    second: redman_skill2_dropkick_4
   - first:
-      213: -2856302046930949843
-    second: TF_rolling_5
+      213: 8378818546757613155
+    second: redman_skill2_dropkick_5
   - first:
-      213: -7900480733072877367
-    second: TF_rolling_6
+      213: -6420227280507589615
+    second: redman_skill2_dropkick_6
   - first:
-      213: 4069404842020107309
-    second: TF_rolling_7
+      213: -2715415652759568256
+    second: redman_skill2_dropkick_7
   - first:
-      213: 8998956921487943924
-    second: TF_rolling_8
+      213: -1056508586325936725
+    second: redman_skill2_dropkick_8
   - first:
-      213: -7576139909802184043
-    second: TF_rolling_9
-  - first:
-      213: 8473212943369471485
-    second: TF_rolling_10
-  - first:
-      213: -1386471581185580292
-    second: TF_rolling_11
+      213: 6542380131736939929
+    second: redman_skill2_dropkick_9
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -127,7 +121,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: TF_rolling_0
+      name: redman_skill2_dropkick_0
       rect:
         serializedVersion: 2
         x: 0
@@ -141,14 +135,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aab238adf83b3cc70800000000000000
-      internalID: 8990226711589366698
+      spriteID: 8987f06815e4beab0800000000000000
+      internalID: -4977798851079473000
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TF_rolling_1
+      name: redman_skill2_dropkick_1
       rect:
         serializedVersion: 2
         x: 96
@@ -162,14 +156,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cebfdb9030bf9f7b0800000000000000
-      internalID: -5189841105100866580
+      spriteID: c2a4410660d2b5aa0800000000000000
+      internalID: -6171289358976136660
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TF_rolling_2
+      name: redman_skill2_dropkick_2
       rect:
         serializedVersion: 2
         x: 192
@@ -183,14 +177,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8e9d08b8efcc989b0800000000000000
-      internalID: -5077301711249286680
+      spriteID: 119649f2a4e05e860800000000000000
+      internalID: 7558463261399869713
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TF_rolling_3
+      name: redman_skill2_dropkick_3
       rect:
         serializedVersion: 2
         x: 288
@@ -204,14 +198,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 48af27af8014e4c40800000000000000
-      internalID: 5498403701883337348
+      spriteID: b639927f7f78116f0800000000000000
+      internalID: -715641366701829269
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TF_rolling_4
+      name: redman_skill2_dropkick_4
       rect:
         serializedVersion: 2
         x: 384
@@ -225,14 +219,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 88da1fc455f4fbaa0800000000000000
-      internalID: -6143104138928345720
+      spriteID: fb4709bdd55976ec0800000000000000
+      internalID: -3573723548947024705
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TF_rolling_5
+      name: redman_skill2_dropkick_5
       rect:
         serializedVersion: 2
         x: 480
@@ -246,14 +240,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d29a571fb606c58d0800000000000000
-      internalID: -2856302046930949843
+      spriteID: 36631fc431b874470800000000000000
+      internalID: 8378818546757613155
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TF_rolling_6
+      name: redman_skill2_dropkick_6
       rect:
         serializedVersion: 2
         x: 576
@@ -267,14 +261,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9c89f5eb1aadb5290800000000000000
-      internalID: -7900480733072877367
+      spriteID: 11ca210ed45c6e6a0800000000000000
+      internalID: -6420227280507589615
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TF_rolling_7
+      name: redman_skill2_dropkick_7
       rect:
         serializedVersion: 2
         x: 672
@@ -288,14 +282,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d24fcd7a42e697830800000000000000
-      internalID: 4069404842020107309
+      spriteID: 0800bb7c9d7e05ad0800000000000000
+      internalID: -2715415652759568256
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TF_rolling_8
+      name: redman_skill2_dropkick_8
       rect:
         serializedVersion: 2
         x: 768
@@ -309,14 +303,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4f8e45e34a7b2ec70800000000000000
-      internalID: 8998956921487943924
+      spriteID: ba574e1d9078651f0800000000000000
+      internalID: -1056508586325936725
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TF_rolling_9
+      name: redman_skill2_dropkick_9
       rect:
         serializedVersion: 2
         x: 864
@@ -330,50 +324,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 592b49364e42cd690800000000000000
-      internalID: -7576139909802184043
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TF_rolling_10
-      rect:
-        serializedVersion: 2
-        x: 960
-        y: 0
-        width: 96
-        height: 96
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: df587cb6746e69570800000000000000
-      internalID: 8473212943369471485
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TF_rolling_11
-      rect:
-        serializedVersion: 2
-        x: 1056
-        y: 0
-        width: 96
-        height: 96
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cf26248517342cce0800000000000000
-      internalID: -1386471581185580292
+      spriteID: 99de0c911143bca50800000000000000
+      internalID: 6542380131736939929
       vertices: []
       indices: 
       edges: []
@@ -381,7 +333,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 0cd165147040a1d44875419a3e0f90c0
+    spriteID: a9a1dd4d57bdadc45a226f3b7d3f28b3
     internalID: 0
     vertices: []
     indices: 
