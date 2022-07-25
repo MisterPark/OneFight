@@ -1,31 +1,31 @@
 fileFormatVersion: 2
-guid: 58c183b7b6f5cd14c8c53c957eea146b
+guid: ce3dfb6938fa3b64c878b845914ae926
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3232625358476896814
-    second: dron1_walk_0
+      213: 3942398335140728678
+    second: redman_jump_0
   - first:
-      213: -3319545156569372360
-    second: dron1_walk_1
+      213: 812302136842931308
+    second: redman_jump_1
   - first:
-      213: -6645693406913148009
-    second: dron1_walk_2
+      213: -4340904235793214598
+    second: redman_jump_2
   - first:
-      213: -7884159834253029610
-    second: dron1_walk_3
+      213: -2986758443036348284
+    second: redman_jump_3
   - first:
-      213: 4926121022210294731
-    second: dron1_walk_4
+      213: -7656624857941972337
+    second: redman_jump_4
   - first:
-      213: -4532984765174809927
-    second: dron1_walk_5
+      213: 2935744119285529831
+    second: redman_jump_5
   - first:
-      213: 2221411444908127828
-    second: dron1_walk_6
+      213: 842074568815322657
+    second: redman_jump_6
   - first:
-      213: -7143685794754642039
-    second: dron1_walk_7
+      213: -5293127932350682519
+    second: redman_jump_7
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -115,7 +115,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: dron1_walk_0
+      name: redman_jump_0
       rect:
         serializedVersion: 2
         x: 0
@@ -129,14 +129,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2d590181d586323d0800000000000000
-      internalID: -3232625358476896814
+      spriteID: 66f8729e56636b630800000000000000
+      internalID: 3942398335140728678
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dron1_walk_1
+      name: redman_jump_1
       rect:
         serializedVersion: 2
         x: 96
@@ -150,14 +150,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 83960de844b9ee1d0800000000000000
-      internalID: -3319545156569372360
+      spriteID: c6c40dc5d70e54b00800000000000000
+      internalID: 812302136842931308
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dron1_walk_2
+      name: redman_jump_2
       rect:
         serializedVersion: 2
         x: 192
@@ -171,14 +171,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 79b49ca8e01c5c3a0800000000000000
-      internalID: -6645693406913148009
+      spriteID: a739e8db89202c3c0800000000000000
+      internalID: -4340904235793214598
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dron1_walk_3
+      name: redman_jump_3
       rect:
         serializedVersion: 2
         x: 288
@@ -192,14 +192,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 61f02fe1766d59290800000000000000
-      internalID: -7884159834253029610
+      spriteID: 4807be44507ec86d0800000000000000
+      internalID: -2986758443036348284
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dron1_walk_4
+      name: redman_jump_4
       rect:
         serializedVersion: 2
         x: 384
@@ -213,14 +213,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bc3cd6158f81d5440800000000000000
-      internalID: 4926121022210294731
+      spriteID: f8a61fb12443eb590800000000000000
+      internalID: -7656624857941972337
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dron1_walk_5
+      name: redman_jump_5
       rect:
         serializedVersion: 2
         x: 480
@@ -234,14 +234,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9ba7f737f5a9711c0800000000000000
-      internalID: -4532984765174809927
+      spriteID: 7ecb475e8bbddb820800000000000000
+      internalID: 2935744119285529831
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dron1_walk_6
+      name: redman_jump_6
       rect:
         serializedVersion: 2
         x: 576
@@ -255,14 +255,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4567cb980f904de10800000000000000
-      internalID: 2221411444908127828
+      spriteID: 126a0acdb56afab00800000000000000
+      internalID: 842074568815322657
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dron1_walk_7
+      name: redman_jump_7
       rect:
         serializedVersion: 2
         x: 672
@@ -276,8 +276,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 98f35a85e978cdc90800000000000000
-      internalID: -7143685794754642039
+      spriteID: 96a2a8190380b86b0800000000000000
+      internalID: -5293127932350682519
       vertices: []
       indices: 
       edges: []
@@ -285,7 +285,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 66edd8ee18526214b82438799c45bcff
+    spriteID: 107605d40a6b74b4382f169d598a1abe
     internalID: 0
     vertices: []
     indices: 

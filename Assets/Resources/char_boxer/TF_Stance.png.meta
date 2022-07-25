@@ -1,7 +1,10 @@
 fileFormatVersion: 2
 guid: 799a1c924651ea54bac60098e72408fa
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -8889979720930624750
+    second: TF_Stance_0
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -89,11 +92,32 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: TF_Stance_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 96
+        height: 96
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21bf0818b8270a480800000000000000
+      internalID: -8889979720930624750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: e1679e5c031b13a4c9ac8f0bb4808b72
     internalID: 0
     vertices: []
     indices: 
