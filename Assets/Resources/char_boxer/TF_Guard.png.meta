@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: de03f434f24f3bf4bb7609fd25103bf1
+guid: fe646e5f833dad94dbb801199077e075
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6164980389118240497
-    second: redman_guard_0
+      213: 2415047805981926718
+    second: TF_Guard_0
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -94,7 +94,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: redman_guard_0
+      name: TF_Guard_0
       rect:
         serializedVersion: 2
         x: 0
@@ -108,8 +108,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1f664ac10096e8550800000000000000
-      internalID: 6164980389118240497
+      spriteID: e35a32f1f29f38120800000000000000
+      internalID: 2415047805981926718
       vertices: []
       indices: 
       edges: []
@@ -117,7 +117,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: ae7dbb5e8eb179a48a7e5a54ef37d386
+    spriteID: b993f390e87879f4ca3f32f2d7a14d28
     internalID: 0
     vertices: []
     indices: 

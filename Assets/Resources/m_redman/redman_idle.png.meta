@@ -1,7 +1,10 @@
 fileFormatVersion: 2
 guid: 0cd081fe4b2d61f4e93943da0b912555
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 6709482557227473703
+    second: redman_idle_0
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -89,11 +92,32 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: redman_idle_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 96
+        height: 96
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72b193266dedc1d50800000000000000
+      internalID: 6709482557227473703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 2242d8333cddfb144835c7740de8c6ca
     internalID: 0
     vertices: []
     indices: 
