@@ -4,12 +4,20 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float _speed;
+    [SerializeField] private float _maxSpeed;
+
+
     SpriteRenderer _spriteRenderer;
+    Animator _animator;
+
+    private Vector3 _currentDirection = Vector3.right;
+    private float _currentSpeed = 0f;
+    private bool _isMove = false;
 
     private void Awake()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
+        _animator = GetComponent<Animator>();
     }
     void Start()
     {
@@ -18,15 +26,35 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        _isMove = false;
+
         if(Input.GetKey(KeyCode.RightArrow))
         {
-            transform.position += Vector3.right * _speed * Time.deltaTime;
-            _spriteRenderer.flipX = false;
+            Move(Vector3.right);
+
         }
         else if (Input.GetKey(KeyCode.LeftArrow))
         {
-            transform.position += Vector3.left * _speed * Time.deltaTime;
-            _spriteRenderer.flipX = true;
+            Move(Vector3.left);
         }
+
+        if(_isMove == false)
+        {
+            _currentSpeed = _currentSpeed * 0.5f;
+            _currentSpeed = Mathf.Clamp(_currentSpeed, 0f, _maxSpeed);
+        }
+
+        _animator.SetFloat("MoveSpeed", _currentSpeed);
+    }
+
+    private void Move(Vector3 direction)
+    {
+        _isMove = true;
+        _currentSpeed += Time.deltaTime;
+        _currentSpeed = Mathf.Clamp(_currentSpeed, 0f, _maxSpeed);
+        _currentDirection = direction;
+        transform.position += _currentDirection * _currentSpeed * Time.deltaTime;
+        
+        _spriteRenderer.flipX = _currentDirection == Vector3.left ? true : false;
     }
 }

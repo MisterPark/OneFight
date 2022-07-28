@@ -4,6 +4,35 @@ using UnityEngine;
 
 namespace OneFight.Core
 {
+    public abstract class GameEventBase<T> : ScriptableObject
+    {
+        private List<Action> _listeners = new List<Action>();
+
+        public void AddListener(Action call)
+        {
+            _listeners.Add(call);
+        }
+
+        public void RemoveListener(Action call)
+        {
+            _listeners.Remove(call);
+        }
+
+        public void RemoveAllListeners()
+        {
+            _listeners.Clear();
+        }
+
+        public void Invoke()
+        {
+            var count = _listeners.Count;
+            for (int i = 0; i < count; i++)
+            {
+                _listeners[i].Invoke();
+            }
+        }
+    }
+
     [CreateAssetMenu(fileName = "GameEvent", menuName = "Scriptable Object/GameEvent/void", order = int.MaxValue)]
     public class GameEvent : ScriptableObject
     {
@@ -64,6 +93,11 @@ namespace OneFight.Core
                 _listeners[i].Invoke(arg);
             }
         }
+    }
+
+    [CreateAssetMenu(fileName = "GameEvent", menuName = "Scriptable Object/GameEvent/String", order = int.MaxValue)]
+    public class GameEventString : GameEvent<string>
+    {
 
     }
 }
