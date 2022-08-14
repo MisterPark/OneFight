@@ -797,7 +797,7 @@ GameObject:
   - component: {fileID: 1325385675}
   - component: {fileID: 1325385679}
   m_Layer: 14
-  m_Name: Wall (3)
+  m_Name: Plat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

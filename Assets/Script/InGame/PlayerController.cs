@@ -29,14 +29,14 @@ public class PlayerController : MonoBehaviour
     }
     void Start()
     {
-        
+
     }
 
     void Update()
     {
         _isMove = false;
 
-        if(Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.RightArrow))
         {
             Move(Vector3.right);
         }
@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
             Move(Vector3.left);
         }
 
-        if(Input.GetKeyDown(KeyCode.UpArrow) && _isJump == false)
+        if (Input.GetKeyDown(KeyCode.UpArrow) && _isJump == false)
         {
             _isJump = true;
             gameObject.layer = LayerMask.NameToLayer("Jump");
@@ -53,7 +53,7 @@ public class PlayerController : MonoBehaviour
 
         }
 
-        if(_isMove == false)
+        if (_isMove == false)
         {
             Decelerate();
         }
@@ -65,14 +65,29 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         int targetMask = collision.gameObject.GetLayerMask();
-        int groundMask = LayerMask.GetMask("Ground","FloatingWall");
-        Debug.Log($"{targetMask} {groundMask}");
-        if((targetMask & groundMask) != 0)
+        int groundMask = LayerMask.GetMask("Ground", "FloatingPlat");
+
+        //Debug.Log($"{targetMask} {groundMask}");
+        if ((targetMask & groundMask) != 0)
         {
-            Debug.Log("Touch Ground");
+            //Debug.Log("Touch Ground");
             _isJump = false;
         }
+    }
 
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        int targetMask = collision.gameObject.GetLayerMask();
+        int platMask = LayerMask.GetMask("FloatingPlat");
+        if ((targetMask & platMask) != 0)
+        {
+            var plat = collision.gameObject.GetComponent<FloatingPlat>();
+            if (plat != null)
+            {
+                Debug.Log("dd");
+                transform.position += plat.Direction * plat.Speed * Time.fixedDeltaTime;
+            }
+        }
     }
 
     private void Move(Vector3 direction)
@@ -82,12 +97,12 @@ public class PlayerController : MonoBehaviour
         _currentSpeed = Mathf.Clamp(_currentSpeed, 0f, _maxSpeed);
         _prevDirection = _currentDirection;
         _currentDirection = direction;
-        if(_currentDirection != _prevDirection)
+        if (_currentDirection != _prevDirection)
         {
             Decelerate();
         }
         transform.position += _currentDirection * _currentSpeed * Time.deltaTime;
-        
+
         _spriteRenderer.flipX = _currentDirection == Vector3.left ? true : false;
     }
 
@@ -106,7 +121,7 @@ public class PlayerController : MonoBehaviour
 
     private void ProcessJump()
     {
-        if(_rigidbody.velocity.y < 0f)
+        if (_rigidbody.velocity.y < 0f)
         {
             gameObject.layer = LayerMask.NameToLayer("Unit");
         }
