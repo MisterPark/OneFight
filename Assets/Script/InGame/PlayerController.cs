@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    private static GameObject player = null;
+    public static GameObject Player { get { return player; } }
     [SerializeField] private float _maxSpeed;
     [SerializeField] private float _jumpPower;
 
@@ -15,9 +17,11 @@ public class PlayerController : MonoBehaviour
     private Vector3 _currentDirection = Vector3.right;
     private float _currentSpeed = 0f;
     private bool _isMove = false;
+    private bool _isJump = false;
 
     private void Awake()
     {
+        player = this.gameObject;
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _animator = GetComponent<Animator>();
         _rigidbody = GetComponent<Rigidbody2D>();
@@ -41,9 +45,12 @@ public class PlayerController : MonoBehaviour
             Move(Vector3.left);
         }
 
-        if(Input.GetKeyDown(KeyCode.UpArrow) && _rigidbody.velocity.y < 0.01f && _rigidbody.velocity.y > -0.01f)
+        if(Input.GetKeyDown(KeyCode.UpArrow) && _isJump == false)
         {
+            _isJump = true;
+            gameObject.layer = LayerMask.NameToLayer("Jump");
             _rigidbody.AddForce(Vector2.up * _jumpPower, ForceMode2D.Impulse);
+
         }
 
         if(_isMove == false)
@@ -51,13 +58,27 @@ public class PlayerController : MonoBehaviour
             Decelerate();
         }
 
+        ProcessJump();
         ProcessAnimation();
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        int targetMask = collision.gameObject.GetLayerMask();
+        int groundMask = LayerMask.GetMask("Ground","FloatingWall");
+        Debug.Log($"{targetMask} {groundMask}");
+        if((targetMask & groundMask) != 0)
+        {
+            Debug.Log("Touch Ground");
+            _isJump = false;
+        }
+
     }
 
     private void Move(Vector3 direction)
     {
         _isMove = true;
-        _currentSpeed += Time.deltaTime;
+        _currentSpeed = _maxSpeed;
         _currentSpeed = Mathf.Clamp(_currentSpeed, 0f, _maxSpeed);
         _prevDirection = _currentDirection;
         _currentDirection = direction;
@@ -80,5 +101,14 @@ public class PlayerController : MonoBehaviour
     {
         _animator.SetFloat("MoveSpeed", _currentSpeed);
         _animator.SetFloat("VelocityY", _rigidbody.velocity.y);
+        _animator.SetBool("IsJump", _isJump);
+    }
+
+    private void ProcessJump()
+    {
+        if(_rigidbody.velocity.y < 0f)
+        {
+            gameObject.layer = LayerMask.NameToLayer("Unit");
+        }
     }
 }

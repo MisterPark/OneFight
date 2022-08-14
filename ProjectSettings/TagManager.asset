@@ -15,13 +15,13 @@ TagManager:
   - 
   - 
   - 
+  - Unit
+  - Jump
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - FloatingWall
+  - Wall
+  - Ground
   - 
   - 
   - 
