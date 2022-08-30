@@ -37,7 +37,7 @@ public class Player : MonoBehaviour
             unit.AddForce(Vector2.up * unit.JumpPower, ForceMode2D.Impulse);
         }
 
-        
+
     }
 
 

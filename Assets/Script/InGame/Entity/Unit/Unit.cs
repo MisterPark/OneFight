@@ -22,9 +22,9 @@ public class Unit : Entity
 
     private void OnValidate()
     {
-        if(spriteRenderer == null) spriteRenderer = GetComponent<SpriteRenderer>();
-        if(animator == null) animator = GetComponent<Animator>();
-        if(rigid== null) rigid = GetComponent<Rigidbody2D>();
+        if (spriteRenderer == null) spriteRenderer = GetComponent<SpriteRenderer>();
+        if (animator == null) animator = GetComponent<Animator>();
+        if (rigid == null) rigid = GetComponent<Rigidbody2D>();
     }
 
     private void FixedUpdate()
@@ -57,16 +57,15 @@ public class Unit : Entity
     {
         IsMove = true;
         currentSpeed = maxSpeed;
-        currentSpeed = Mathf.Clamp(currentSpeed, 0f, maxSpeed);
+        //currentSpeed = Mathf.Clamp(currentSpeed, 0f, maxSpeed);
         prevDirection = currentDirection;
-        currentDirection = direction;
+        currentDirection = new Vector3(direction.x, 0f, 0f).normalized;
         if (currentDirection != prevDirection)
         {
             Decelerate();
         }
         transform.position += currentDirection * currentSpeed * Time.deltaTime;
-
-        spriteRenderer.flipX = currentDirection == Vector3.left ? true : false;
+        spriteRenderer.flipX = currentDirection.x < 0 ? true : false;
     }
 
     public void AddForce(Vector3 force)
