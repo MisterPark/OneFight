@@ -478,9 +478,10 @@ GameObject:
   m_Component:
   - component: {fileID: 875898235}
   - component: {fileID: 875898234}
+  - component: {fileID: 875898236}
+  - component: {fileID: 875898240}
   - component: {fileID: 875898233}
   - component: {fileID: 875898237}
-  - component: {fileID: 875898236}
   - component: {fileID: 875898239}
   - component: {fileID: 875898238}
   m_Layer: 10
@@ -603,7 +604,12 @@ MonoBehaviour:
   jumpPower: 5
   spriteRenderer: {fileID: 875898234}
   animator: {fileID: 875898236}
+  animationEvents: {fileID: 875898240}
   rigid: {fileID: 875898238}
+  moveSpeedHash: 526065662
+  velocityYHash: -303020060
+  isJumpHash: 19011116
+  comboHash: 1895636814
 --- !u!50 &875898238
 Rigidbody2D:
   serializedVersion: 4
@@ -651,6 +657,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.25, y: 0.4}
   m_EdgeRadius: 0
+--- !u!114 &875898240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 875898232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e7634a8f8350dd48a8defe5abbe590e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1086170776
 GameObject:
   m_ObjectHideFlags: 0
@@ -750,7 +768,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1131823605
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1246,9 +1264,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1522358657}
   - component: {fileID: 1522358656}
+  - component: {fileID: 1522358660}
+  - component: {fileID: 1522358663}
   - component: {fileID: 1522358662}
   - component: {fileID: 1522358661}
-  - component: {fileID: 1522358660}
   - component: {fileID: 1522358659}
   - component: {fileID: 1522358658}
   m_Layer: 0
@@ -1405,7 +1424,12 @@ MonoBehaviour:
   jumpPower: 5
   spriteRenderer: {fileID: 1522358656}
   animator: {fileID: 1522358660}
+  animationEvents: {fileID: 1522358663}
   rigid: {fileID: 1522358658}
+  moveSpeedHash: 526065662
+  velocityYHash: -303020060
+  isJumpHash: 19011116
+  comboHash: 1895636814
 --- !u!114 &1522358662
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1421,6 +1445,18 @@ MonoBehaviour:
   unit: {fileID: 1522358661}
   fov: 3
   stopDistance: 0.5
+--- !u!114 &1522358663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1522358655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e7634a8f8350dd48a8defe5abbe590e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1791727556
 GameObject:
   m_ObjectHideFlags: 0

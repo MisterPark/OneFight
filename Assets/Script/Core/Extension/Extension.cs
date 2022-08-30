@@ -17,4 +17,22 @@ public static class Extension
     {
         return 1 << gameObject.layer;
     }
+
+    public static UnitState ToUnitState(this string name)
+    {
+        for (int i = (int)UnitState.Idle; i < (int)UnitState.End; i++)
+        {
+            UnitState state = (UnitState)i;
+            if (string.IsNullOrEmpty(name))
+            {
+                return UnitState.None;
+            }
+
+            if(name.Contains(state.ToString()))
+            {
+                return state;
+            }
+        }
+        return UnitState.None;
+    }
 }

@@ -21,6 +21,11 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        if(Input.GetKeyDown(KeyCode.X))
+        {
+            unit.Attack();
+        }
+
         if (Input.GetKey(KeyCode.RightArrow))
         {
             unit.Move(Vector3.right);
