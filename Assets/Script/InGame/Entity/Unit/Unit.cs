@@ -20,6 +20,7 @@ public class Unit : Entity
     private Vector3 prevDirection = Vector3.right;
     private Vector3 currentDirection = Vector3.right;
     private float currentSpeed = 0f;
+    private bool moveFlag = true;
     public bool IsMove { get; set; } = false;
     public bool IsJump { get; set; } = false;
     public bool IsAttack { get; set; } = false;
@@ -27,7 +28,8 @@ public class Unit : Entity
 
     private int combo = 0;
     private int prevCombo = 0;
-    private float comboDelay = 0.01f;
+    private float comboDelay = 0.3f;
+    private float maxComboDelay = 0.5f;
     private float comboTick = 0f;
     private bool comboFlag = true;
 
@@ -83,7 +85,8 @@ public class Unit : Entity
 
     public void Move(Vector3 direction)
     {
-        if (combo != 0) return;
+        //if (combo != 0) return;
+        if (!moveFlag) return;
         IsMove = true;
         currentSpeed = maxSpeed;
         //currentSpeed = Mathf.Clamp(currentSpeed, 0f, maxSpeed);
@@ -99,9 +102,16 @@ public class Unit : Entity
 
     public void Attack()
     {
+        if (IsJump) return;
+
         if(comboFlag)
         {
-            combo++;
+            comboFlag = false;
+            if(combo < 3)
+            {
+                combo++;
+                moveFlag = false;
+            }
         }
     }
 
@@ -164,7 +174,36 @@ public class Unit : Entity
 
     private void ProcessAttack()
     {
-        if (combo > 3) combo = 0;
+        if(combo > 0)
+        {
+            if (prevCombo != combo)
+            {
+                prevCombo = combo;
+                comboTick = 0;
+                return;
+            }
+
+            comboTick += Time.deltaTime;
+            if (comboTick > maxComboDelay)
+            {
+                combo = 0;
+                comboTick = 0;
+                comboFlag = true;
+                moveFlag = true;
+            }
+            else if(comboTick > comboDelay)
+            {
+                comboFlag = true;
+                moveFlag = true;
+            }
+
+        }
+        else
+        {
+            comboFlag = true;
+        }
+        
+        
     }
 
     public void OnAttack01Start()
@@ -173,10 +212,6 @@ public class Unit : Entity
 
     public void OnAttack01End()
     {
-        if(combo == 1)
-        {
-            combo = 0;
-        }
     }
 
     public void OnAttack02Start()
@@ -185,10 +220,6 @@ public class Unit : Entity
 
     public void OnAttack02End()
     {
-        if(combo == 2)
-        {
-            combo = 0;
-        }
     }
 
     public void OnAttack03Start()

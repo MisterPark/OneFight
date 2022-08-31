@@ -26,6 +26,7 @@ public class EnemyAI : MonoBehaviour
         if (DetectPlayer(out to))
         {
             FollowTarget(Player.Self.transform);
+            AttackTarget(Player.Self.transform);
         }
     }
 
@@ -53,6 +54,19 @@ public class EnemyAI : MonoBehaviour
         if (to.magnitude > stopDistance)
         {
             unit.Move(to.normalized);
+        }
+    }
+
+    public void AttackTarget(Transform target)
+    {
+        Vector3 playerPos = Player.Self.transform.position;
+        Vector3 myPos = transform.position;
+        playerPos.y = 0f;
+        myPos.y = 0f;
+        Vector3 to = playerPos - myPos;
+        if (to.magnitude <= stopDistance)
+        {
+            unit.Attack();
         }
     }
 }
