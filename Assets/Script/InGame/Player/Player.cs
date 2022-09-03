@@ -14,6 +14,11 @@ public class Player : MonoBehaviour
         player = this;
     }
 
+    private void Start()
+    {
+        unit.Team = Team.Player;
+    }
+
     private void OnValidate()
     {
         if (unit == null) unit = GetComponent<Unit>();

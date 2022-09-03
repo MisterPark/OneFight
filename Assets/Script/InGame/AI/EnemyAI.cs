@@ -15,7 +15,7 @@ public class EnemyAI : MonoBehaviour
 
     private void Start()
     {
-
+        unit.Team = Team.Enemy;
     }
 
     private void Update()
@@ -26,7 +26,7 @@ public class EnemyAI : MonoBehaviour
         if (DetectPlayer(out to))
         {
             FollowTarget(Player.Self.transform);
-            AttackTarget(Player.Self.transform);
+            //AttackTarget(Player.Self.transform);
         }
     }
 

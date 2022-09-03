@@ -11,3 +11,10 @@ public enum UnitState : byte
     Attack03,
     End,
 }
+
+public enum Team
+{
+    Neutral,
+    Player,
+    Enemy
+}

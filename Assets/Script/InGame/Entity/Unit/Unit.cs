@@ -7,6 +7,9 @@ public class Unit : Entity
     [SerializeField] private float maxSpeed;
     [SerializeField] private float jumpPower;
 
+    [SerializeField] private Vector3 hitTarget;
+    [SerializeField] private GameObject hitBox;
+
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Animator animator;
     [SerializeField] private AnimationEvents animationEvents;
@@ -32,6 +35,11 @@ public class Unit : Entity
     private float maxComboDelay = 0.5f;
     private float comboTick = 0f;
     private bool comboFlag = true;
+
+    public Team Team { get; set; }
+
+    private float hp = 10f;
+    private float damage = 1f;
 
     private void OnValidate()
     {
@@ -107,7 +115,8 @@ public class Unit : Entity
         if(comboFlag)
         {
             comboFlag = false;
-            if(combo < 3)
+            CreateHitBox(transform.position + hitTarget);
+            if (combo < 3)
             {
                 combo++;
                 moveFlag = false;
@@ -229,5 +238,26 @@ public class Unit : Entity
     public void OnAttack03End()
     {
         combo = 0;
+    }
+
+    public void CreateHitBox(Vector3 target)
+    {
+        GameObject hitBoxObj = Instantiate(hitBox);
+        hitBoxObj.transform.position =  target;
+        var box = hitBoxObj.GetComponent<HitBox>();
+        if(box != null)
+        {
+            box.Damage = damage;
+        }
+    }
+
+    public void Damage(float damage)
+    {
+        hp -= damage;
+        if(hp <= 0f)
+        {
+            hp = 0f;
+            Destroy(gameObject);
+        }
     }
 }
