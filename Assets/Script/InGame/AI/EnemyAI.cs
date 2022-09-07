@@ -26,7 +26,7 @@ public class EnemyAI : MonoBehaviour
         if (DetectPlayer(out to))
         {
             FollowTarget(Player.Self.transform);
-            //AttackTarget(Player.Self.transform);
+            AttackTarget(Player.Self.transform);
         }
     }
 

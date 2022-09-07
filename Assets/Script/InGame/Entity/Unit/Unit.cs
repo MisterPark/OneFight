@@ -19,7 +19,10 @@ public class Unit : Entity
     [SerializeField] private int velocityYHash;
     [SerializeField] private int isJumpHash;
     [SerializeField] private int comboHash;
+    [SerializeField] private int isStiffHash;
+    [SerializeField] private int stiffnessDurationHash;
 
+    // Move
     private Vector3 prevDirection = Vector3.right;
     private Vector3 currentDirection = Vector3.right;
     private float currentSpeed = 0f;
@@ -29,6 +32,11 @@ public class Unit : Entity
     public bool IsAttack { get; set; } = false;
     public float JumpPower => jumpPower;
 
+    public bool IsLeft { get { return currentDirection.x < 0; } }
+
+    // Combo
+    public bool AttackFlag { get; set; } = true;
+
     private int combo = 0;
     private int prevCombo = 0;
     private float comboDelay = 0.3f;
@@ -36,22 +44,35 @@ public class Unit : Entity
     private float comboTick = 0f;
     private bool comboFlag = true;
 
+    private bool isCreateHitBox = false;
+
+    // Stiffness & Knockback
+    private bool isStiff = false;
+    private float stiffnessTick = 0f;
+    private float stiffnessDuration = 0.5f;
+    private float knockbackPower = 0.2f;
+    private Vector3 knockbackDirection = Vector3.zero;
+
     public Team Team { get; set; }
 
-    private float hp = 10f;
+    // Stat
+    private float hp = 100f;
     private float damage = 1f;
+
 
     private void OnValidate()
     {
         if (spriteRenderer == null) spriteRenderer = GetComponent<SpriteRenderer>();
         if (animator == null) animator = GetComponent<Animator>();
         if (rigid == null) rigid = GetComponent<Rigidbody2D>();
-        if(animationEvents == null) animationEvents = GetComponent<AnimationEvents>();
+        if (animationEvents == null) animationEvents = GetComponent<AnimationEvents>();
 
         moveSpeedHash = Animator.StringToHash("MoveSpeed");
         velocityYHash = Animator.StringToHash("VelocityY");
         isJumpHash = Animator.StringToHash("IsJump");
         comboHash = Animator.StringToHash("Combo");
+        isStiffHash = Animator.StringToHash("IsStiff");
+        stiffnessDurationHash = Animator.StringToHash("StiffnessDuration");
     }
 
     private void Start()
@@ -78,6 +99,7 @@ public class Unit : Entity
 
         ProcessAttack();
         ProcessJump();
+        ProcessHit();
         ProcessAnimation();
     }
 
@@ -93,7 +115,7 @@ public class Unit : Entity
 
     public void Move(Vector3 direction)
     {
-        //if (combo != 0) return;
+        if (isStiff) return;
         if (!moveFlag) return;
         IsMove = true;
         currentSpeed = maxSpeed;
@@ -105,17 +127,18 @@ public class Unit : Entity
             Decelerate();
         }
         transform.position += currentDirection * currentSpeed * Time.deltaTime;
-        spriteRenderer.flipX = currentDirection.x < 0 ? true : false;
+        spriteRenderer.flipX = IsLeft;
     }
 
     public void Attack()
     {
+        if (isStiff) return;
         if (IsJump) return;
+        if (!AttackFlag) return;
 
-        if(comboFlag)
+        if (comboFlag)
         {
             comboFlag = false;
-            CreateHitBox(transform.position + hitTarget);
             if (combo < 3)
             {
                 combo++;
@@ -142,6 +165,11 @@ public class Unit : Entity
 
     private void ProcessAnimation()
     {
+        animator.SetFloat(stiffnessDurationHash, stiffnessDuration);
+        if (isStiff)
+        {
+            animator.SetTrigger(isStiffHash);
+        }
         animator.SetInteger(comboHash, combo);
         animator.SetFloat(moveSpeedHash, currentSpeed);
         animator.SetFloat(velocityYHash, rigid.velocity.y);
@@ -183,12 +211,13 @@ public class Unit : Entity
 
     private void ProcessAttack()
     {
-        if(combo > 0)
+        if (combo > 0)
         {
             if (prevCombo != combo)
             {
                 prevCombo = combo;
                 comboTick = 0;
+                isCreateHitBox = false;
                 return;
             }
 
@@ -197,13 +226,21 @@ public class Unit : Entity
             {
                 combo = 0;
                 comboTick = 0;
+                isCreateHitBox = false;
                 comboFlag = true;
                 moveFlag = true;
             }
-            else if(comboTick > comboDelay)
+            else if (comboTick > comboDelay)
             {
                 comboFlag = true;
                 moveFlag = true;
+                if (isCreateHitBox == false)
+                {
+                    isCreateHitBox = true;
+                    var curHitTarget = hitTarget;
+                    curHitTarget.x *= IsLeft ? -1f : 1f;
+                    CreateHitBox(transform.position + curHitTarget);
+                }
             }
 
         }
@@ -211,8 +248,28 @@ public class Unit : Entity
         {
             comboFlag = true;
         }
-        
-        
+
+
+    }
+
+    private void ProcessHit()
+    {
+        if (isStiff)
+        {
+            stiffnessTick += Time.deltaTime;
+            if (stiffnessTick > stiffnessDuration)
+            {
+                isStiff = false;
+                moveFlag = true;
+                AttackFlag = true;
+                stiffnessTick = 0f;
+                return;
+            }
+
+            transform.position += knockbackPower * knockbackDirection * Time.deltaTime;
+        }
+
+
     }
 
     public void OnAttack01Start()
@@ -243,18 +300,24 @@ public class Unit : Entity
     public void CreateHitBox(Vector3 target)
     {
         GameObject hitBoxObj = Instantiate(hitBox);
-        hitBoxObj.transform.position =  target;
+        hitBoxObj.transform.position = target;
         var box = hitBoxObj.GetComponent<HitBox>();
-        if(box != null)
+        if (box != null)
         {
+            box.Team = Team;
             box.Damage = damage;
         }
     }
 
-    public void Damage(float damage)
+    public void OnHit(float damage, Vector3 knockbackDirection)
     {
+        isStiff = true;
+        stiffnessTick = 0f;
+        moveFlag = false;
+        AttackFlag = false;
+        this.knockbackDirection = knockbackDirection;
         hp -= damage;
-        if(hp <= 0f)
+        if (hp <= 0f)
         {
             hp = 0f;
             Destroy(gameObject);
