@@ -671,6 +671,7 @@ MonoBehaviour:
   isJumpHash: 19011116
   comboHash: 1895636814
   isStiffHash: -1965561208
+  stiffnessDurationHash: 466305958
 --- !u!50 &875898238
 Rigidbody2D:
   serializedVersion: 4
@@ -1521,6 +1522,7 @@ MonoBehaviour:
   isJumpHash: 19011116
   comboHash: 1895636814
   isStiffHash: -1965561208
+  stiffnessDurationHash: 466305958
 --- !u!114 &1522358662
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1536,6 +1538,7 @@ MonoBehaviour:
   unit: {fileID: 1522358661}
   fov: 3
   stopDistance: 0.2
+  attackDelay: 0.1
 --- !u!114 &1522358663
 MonoBehaviour:
   m_ObjectHideFlags: 0
