@@ -304,18 +304,19 @@ public class Unit : Entity
         var box = hitBoxObj.GetComponent<HitBox>();
         if (box != null)
         {
+            box.Owner = this;
             box.Team = Team;
             box.Damage = damage;
         }
     }
 
-    public void OnHit(float damage, Vector3 knockbackDirection)
+    public void OnHit(float damage, Unit beater)
     {
         isStiff = true;
         stiffnessTick = 0f;
         moveFlag = false;
         AttackFlag = false;
-        this.knockbackDirection = knockbackDirection;
+        this.knockbackDirection = (transform.position - beater.transform.position).normalized;
         hp -= damage;
         if (hp <= 0f)
         {

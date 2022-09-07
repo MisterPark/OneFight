@@ -7,6 +7,9 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private Unit unit;
     [SerializeField] private float fov;
     [SerializeField] private float stopDistance;
+    [SerializeField] private float attackDelay;
+
+    private float attackTick = 0f;
 
     private void OnValidate()
     {
@@ -66,7 +69,17 @@ public class EnemyAI : MonoBehaviour
         Vector3 to = playerPos - myPos;
         if (to.magnitude <= stopDistance)
         {
-            unit.Attack();
+            attackTick += Time.deltaTime;
+            if (attackTick > attackDelay)
+            {
+                attackTick = 0f;
+                unit.Attack();
+
+            }
+        }
+        else
+        {
+            attackTick = 0f;
         }
     }
 }

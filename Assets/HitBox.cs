@@ -6,6 +6,7 @@ public class HitBox : MonoBehaviour
 {
     [SerializeField] Team team;
     public Team Team { get { return team; } set { team = value; } }
+    public Unit Owner { get; set; }
     public float Damage { get; set; }
 
     private float lifeTime = 0.4f;
@@ -26,11 +27,9 @@ public class HitBox : MonoBehaviour
         if (target != null)
         {
             if (target.Team != Team)
-            {
-                var knockbackDirection = (collision.transform.position - transform.position).normalized;
-                Debug.Log("Hit");
+            {Debug.Log("Hit");
 
-                target.OnHit(Damage, knockbackDirection);
+                target.OnHit(Damage, Owner);
                 Destroy(gameObject);
             }
         }
