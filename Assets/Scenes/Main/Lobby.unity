@@ -535,6 +535,7 @@ GameObject:
   m_Component:
   - component: {fileID: 875898235}
   - component: {fileID: 875898234}
+  - component: {fileID: 875898242}
   - component: {fileID: 875898236}
   - component: {fileID: 875898240}
   - component: {fileID: 875898233}
@@ -581,7 +582,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: b90bde29953786441ba53a1965f630da, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -666,6 +667,7 @@ MonoBehaviour:
   animator: {fileID: 875898236}
   animationEvents: {fileID: 875898240}
   rigid: {fileID: 875898238}
+  materialProperty: {fileID: 875898242}
   moveSpeedHash: 526065662
   velocityYHash: -303020060
   isJumpHash: 19011116
@@ -757,6 +759,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.25, y: 0.4}
   m_EdgeRadius: 0
+--- !u!114 &875898242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 875898232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21f00592744706b418e1917750c289b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hitColor: {r: 1, g: 1, b: 1, a: 1}
+  _onHit: 0
 --- !u!1 &1086170776
 GameObject:
   m_ObjectHideFlags: 0
@@ -768,6 +784,7 @@ GameObject:
   - component: {fileID: 1086170779}
   - component: {fileID: 1086170778}
   - component: {fileID: 1086170777}
+  - component: {fileID: 1086170780}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -793,7 +810,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 1, g: 1, b: 1, a: 0}
+  m_BackGroundColor: {r: 0.004316493, g: 0.744522, b: 0.9150943, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -840,6 +857,39 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1086170780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1086170776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
 --- !u!1 &1131823604
 GameObject:
   m_ObjectHideFlags: 0
@@ -1352,6 +1402,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1522358657}
   - component: {fileID: 1522358656}
+  - component: {fileID: 1522358665}
   - component: {fileID: 1522358660}
   - component: {fileID: 1522358663}
   - component: {fileID: 1522358662}
@@ -1385,7 +1436,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: b90bde29953786441ba53a1965f630da, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1517,6 +1568,7 @@ MonoBehaviour:
   animator: {fileID: 1522358660}
   animationEvents: {fileID: 1522358663}
   rigid: {fileID: 1522358658}
+  materialProperty: {fileID: 1522358665}
   moveSpeedHash: 526065662
   velocityYHash: -303020060
   isJumpHash: 19011116
@@ -1577,3 +1629,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.25, y: 0.4}
   m_EdgeRadius: 0
+--- !u!114 &1522358665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1522358655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21f00592744706b418e1917750c289b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hitColor: {r: 1, g: 1, b: 1, a: 1}
+  _onHit: 0

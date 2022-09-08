@@ -14,6 +14,7 @@ public class Unit : Entity
     [SerializeField] private Animator animator;
     [SerializeField] private AnimationEvents animationEvents;
     [SerializeField] private Rigidbody2D rigid;
+    [SerializeField] private MaterialProperty materialProperty;
 
     [SerializeField] private int moveSpeedHash;
     [SerializeField] private int velocityYHash;
@@ -66,6 +67,7 @@ public class Unit : Entity
         if (animator == null) animator = GetComponent<Animator>();
         if (rigid == null) rigid = GetComponent<Rigidbody2D>();
         if (animationEvents == null) animationEvents = GetComponent<AnimationEvents>();
+        if(materialProperty == null) materialProperty = GetComponent<MaterialProperty>();
 
         moveSpeedHash = Animator.StringToHash("MoveSpeed");
         velocityYHash = Animator.StringToHash("VelocityY");
@@ -317,6 +319,8 @@ public class Unit : Entity
         moveFlag = false;
         AttackFlag = false;
         this.knockbackDirection = (transform.position - beater.transform.position).normalized;
+        materialProperty.OnHit = true;
+
         hp -= damage;
         if (hp <= 0f)
         {
