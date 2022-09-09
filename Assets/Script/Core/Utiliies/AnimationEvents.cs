@@ -7,9 +7,9 @@ using UnityEngine.Events;
 public class AnimationEvents : MonoBehaviour
 {
     private Animator animator;
-    private Dictionary<UnitState, AnimationEventInvocator> animationEvents = new Dictionary<UnitState, AnimationEventInvocator>();
+    private Dictionary<AnimationState, AnimationEventInvocator> animationEvents = new Dictionary<AnimationState, AnimationEventInvocator>();
 
-    public Dictionary<UnitState, AnimationEventInvocator> Events => animationEvents;
+    public Dictionary<AnimationState, AnimationEventInvocator> Events => animationEvents;
 
 
     private void Awake()

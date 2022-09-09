@@ -42,9 +42,7 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.UpArrow) && unit.IsJump == false)
         {
-            unit.IsJump = true;
-            gameObject.layer = LayerMask.NameToLayer("Jump");
-            unit.AddForce(Vector2.up * unit.JumpPower, ForceMode2D.Impulse);
+            unit.Jump();
         }
 
 

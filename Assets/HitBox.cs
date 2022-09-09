@@ -8,6 +8,7 @@ public class HitBox : MonoBehaviour
     public Team Team { get { return team; } set { team = value; } }
     public Unit Owner { get; set; }
     public float Damage { get; set; }
+    public AttackType AttackType { get; set; }
 
     private float lifeTime = 0.4f;
     private float lifeTick = 0f;
@@ -27,9 +28,9 @@ public class HitBox : MonoBehaviour
         if (target != null)
         {
             if (target.Team != Team)
-            {Debug.Log("Hit");
+            {
 
-                target.OnHit(Damage, Owner);
+                target.OnHit(Damage, Owner, AttackType);
                 Destroy(gameObject);
             }
         }

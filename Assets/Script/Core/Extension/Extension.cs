@@ -18,14 +18,14 @@ public static class Extension
         return 1 << gameObject.layer;
     }
 
-    public static UnitState ToUnitState(this string name)
+    public static AnimationState ToUnitState(this string name)
     {
-        for (int i = (int)UnitState.Idle; i < (int)UnitState.End; i++)
+        for (int i = (int)AnimationState.Idle; i < (int)AnimationState.End; i++)
         {
-            UnitState state = (UnitState)i;
+            AnimationState state = (AnimationState)i;
             if (string.IsNullOrEmpty(name))
             {
-                return UnitState.None;
+                return AnimationState.None;
             }
 
             if(name.Contains(state.ToString()))
@@ -33,6 +33,6 @@ public static class Extension
                 return state;
             }
         }
-        return UnitState.None;
+        return AnimationState.None;
     }
 }

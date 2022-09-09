@@ -22,6 +22,7 @@ public partial class Unit : Entity
     [SerializeField] private int comboHash;
     [SerializeField] private int isStiffHash;
     [SerializeField] private int stiffnessDurationHash;
+    [SerializeField] private int downHash;
 
     // Move
     private Vector3 prevDirection = Vector3.right;
@@ -39,14 +40,10 @@ public partial class Unit : Entity
     public bool AttackFlag { get; set; } = true;
 
     private int combo = 0;
-    private int prevCombo = 0;
-    private float comboDelay = 0.3f;
-    private float maxComboDelay = 0.5f;
-    private float comboTick = 0f;
     private bool comboFlag = true;
     private int maxCombo = 4;
 
-    private bool isCreateHitBox = false;
+    private bool hitBoxFlag = false;
 
     // Stiffness & Knockback
     private bool isStiff = false;
@@ -54,6 +51,9 @@ public partial class Unit : Entity
     private float stiffnessDuration = 0.5f;
     private float knockbackPower = 0.2f;
     private Vector3 knockbackDirection = Vector3.zero;
+    // Down
+    private bool downFlag = false;
+    private bool isDown = false;
 
     public Team Team { get; set; }
 
@@ -76,18 +76,25 @@ public partial class Unit : Entity
         comboHash = Animator.StringToHash("Combo");
         isStiffHash = Animator.StringToHash("IsStiff");
         stiffnessDurationHash = Animator.StringToHash("StiffnessDuration");
+        downHash = Animator.StringToHash("IsDown");
     }
 
     private void Start()
     {
-        animationEvents.Events[UnitState.Attack01].OnEnter.AddListener(OnAttack01Start);
-        animationEvents.Events[UnitState.Attack01].OnExit.AddListener(OnAttack01End);
-        animationEvents.Events[UnitState.Attack02].OnEnter.AddListener(OnAttack02Start);
-        animationEvents.Events[UnitState.Attack02].OnExit.AddListener(OnAttack02End);
-        animationEvents.Events[UnitState.Attack03].OnEnter.AddListener(OnAttack03Start);
-        animationEvents.Events[UnitState.Attack03].OnExit.AddListener(OnAttack03End);
-        animationEvents.Events[UnitState.Attack04].OnEnter.AddListener(OnAttack04Start);
-        animationEvents.Events[UnitState.Attack04].OnExit.AddListener(OnAttack04End);
+        animationEvents.Events[AnimationState.Attack01].OnEnter.AddListener(OnAttackStart);
+        animationEvents.Events[AnimationState.Attack01].OnEnd.AddListener(OnAttackEnd);
+        animationEvents.Events[AnimationState.Attack01].OnOverHalf.AddListener(OnAttackOverHalf);
+        animationEvents.Events[AnimationState.Attack02].OnEnter.AddListener(OnAttackStart);
+        animationEvents.Events[AnimationState.Attack02].OnEnd.AddListener(OnAttackEnd);
+        animationEvents.Events[AnimationState.Attack02].OnOverHalf.AddListener(OnAttackOverHalf);
+        animationEvents.Events[AnimationState.Attack03].OnEnter.AddListener(OnAttackStart);
+        animationEvents.Events[AnimationState.Attack03].OnEnd.AddListener(OnAttackEnd);
+        animationEvents.Events[AnimationState.Attack03].OnOverHalf.AddListener(OnAttackOverHalf);
+        animationEvents.Events[AnimationState.Attack04].OnEnter.AddListener(OnAttackStart);
+        animationEvents.Events[AnimationState.Attack04].OnEnd.AddListener(OnAttackEnd);
+        animationEvents.Events[AnimationState.Attack04].OnOverHalf.AddListener(OnAttackOverHalf);
+        animationEvents.Events[AnimationState.Down].OnEnter.AddListener(OnDownStart);
+        animationEvents.Events[AnimationState.Down].OnExit.AddListener(OnDownExit);
     }
 
     private void FixedUpdate()
@@ -102,7 +109,6 @@ public partial class Unit : Entity
             Decelerate();
         }
 
-        ProcessAttack();
         ProcessJump();
         ProcessHit();
         ProcessAnimation();
@@ -120,6 +126,7 @@ public partial class Unit : Entity
 
     public void Move(Vector3 direction)
     {
+        if (isDown) return;
         if (isStiff) return;
         if (!moveFlag) return;
         IsMove = true;
@@ -135,8 +142,18 @@ public partial class Unit : Entity
         spriteRenderer.flipX = IsLeft;
     }
 
+    public void Jump()
+    {
+        if (isDown) return;
+        if (isStiff) return;
+        IsJump = true;
+        gameObject.layer = LayerMask.NameToLayer("Jump");
+        AddForce(Vector2.up * JumpPower, ForceMode2D.Impulse);
+    }
+
     public void Attack()
     {
+        if (isDown) return;
         if (isStiff) return;
         if (IsJump) return;
         if (!AttackFlag) return;
@@ -171,6 +188,11 @@ public partial class Unit : Entity
     private void ProcessAnimation()
     {
         animator.SetFloat(stiffnessDurationHash, stiffnessDuration);
+        if(downFlag)
+        {
+            downFlag = false;
+            animator.SetTrigger(downHash);
+        }
         if (isStiff)
         {
             animator.SetTrigger(isStiffHash);
@@ -214,49 +236,6 @@ public partial class Unit : Entity
         }
     }
 
-    private void ProcessAttack()
-    {
-        if (combo > 0)
-        {
-            if (prevCombo != combo)
-            {
-                prevCombo = combo;
-                comboTick = 0;
-                isCreateHitBox = false;
-                return;
-            }
-
-            comboTick += Time.deltaTime;
-            if (comboTick > maxComboDelay)
-            {
-                combo = 0;
-                comboTick = 0;
-                isCreateHitBox = false;
-                comboFlag = true;
-                moveFlag = true;
-            }
-            else if (comboTick > comboDelay)
-            {
-                comboFlag = true;
-                moveFlag = true;
-                if (isCreateHitBox == false)
-                {
-                    isCreateHitBox = true;
-                    var curHitTarget = hitTarget;
-                    curHitTarget.x *= IsLeft ? -1f : 1f;
-                    CreateHitBox(transform.position + curHitTarget);
-                }
-            }
-
-        }
-        else
-        {
-            comboFlag = true;
-        }
-
-
-    }
-
     private void ProcessHit()
     {
         if (isStiff)
@@ -270,47 +249,55 @@ public partial class Unit : Entity
                 stiffnessTick = 0f;
                 return;
             }
-
-            transform.position += knockbackPower * knockbackDirection * Time.deltaTime;
         }
 
+        if(isStiff || isDown)
+        {
+            var power = isDown ? knockbackPower * 2f : knockbackPower;
+            transform.position += power * knockbackDirection * Time.deltaTime;
+        }
 
     }
-
-    public void OnAttack01Start()
+    public void OnAttackStart()
     {
+        hitBoxFlag = true;
+        comboFlag = false;
     }
 
-    public void OnAttack01End()
+    public void OnAttackOverHalf()
     {
+        comboFlag = true;
+        if (hitBoxFlag)
+        {
+            hitBoxFlag = false;
+            var curHitTarget = hitTarget;
+            curHitTarget.x *= IsLeft ? -1f : 1f;
+            var attackType = combo == 4 ? AttackType.Down : AttackType.Normal;
+            CreateHitBox(transform.position + curHitTarget, attackType);
+        }
     }
 
-    public void OnAttack02Start()
-    {
-    }
-
-    public void OnAttack02End()
-    {
-    }
-
-    public void OnAttack03Start()
-    {
-    }
-
-    public void OnAttack03End()
-    {
-    }
-
-    public void OnAttack04Start()
-    {
-    }
-
-    public void OnAttack04End()
+    public void OnAttackEnd()
     {
         combo = 0;
+        comboFlag = true;
+        moveFlag = true;
     }
 
-    public void CreateHitBox(Vector3 target)
+    public void OnDownStart()
+    {
+
+    }
+
+    public void OnDownExit()
+    {
+        Debug.Log("Down End");
+        isDown = false;
+        moveFlag = true;
+        AttackFlag = true;
+    }
+
+    public void CreateHitBox(Vector3 target, AttackType attackType)
     {
         GameObject hitBoxObj = Instantiate(hitBox);
         hitBoxObj.transform.position = target;
@@ -320,13 +307,27 @@ public partial class Unit : Entity
             box.Owner = this;
             box.Team = Team;
             box.Damage = damage;
+            box.AttackType = attackType;
         }
     }
 
-    public void OnHit(float damage, Unit beater)
+    public void OnHit(float damage, Unit beater, AttackType attackType)
     {
-        isStiff = true;
-        stiffnessTick = 0f;
+        switch (attackType)
+        {
+            case AttackType.Normal:
+                isStiff = true;
+                stiffnessTick = 0f;
+                break;
+            case AttackType.Down:
+                downFlag = true;
+                isDown = true;
+                break;
+            default:
+                break;
+        }
+
+        
         moveFlag = false;
         AttackFlag = false;
         this.knockbackDirection = (transform.position - beater.transform.position).normalized;
