@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public partial class Unit : Entity
@@ -40,6 +38,10 @@ public partial class Unit : Entity
     public bool AttackFlag { get; set; } = true;
 
     private int combo = 0;
+    private int prevCombo = 0;
+    private float comboDelay = 0.3f;
+    private float maxComboDelay = 0.5f;
+    private float comboTick = 0f;
     private bool comboFlag = true;
     private int maxCombo = 4;
 
@@ -68,7 +70,7 @@ public partial class Unit : Entity
         if (animator == null) animator = GetComponent<Animator>();
         if (rigid == null) rigid = GetComponent<Rigidbody2D>();
         if (animationEvents == null) animationEvents = GetComponent<AnimationEvents>();
-        if(materialProperty == null) materialProperty = GetComponent<MaterialProperty>();
+        if (materialProperty == null) materialProperty = GetComponent<MaterialProperty>();
 
         moveSpeedHash = Animator.StringToHash("MoveSpeed");
         velocityYHash = Animator.StringToHash("VelocityY");
@@ -84,15 +86,19 @@ public partial class Unit : Entity
         animationEvents.Events[AnimationState.Attack01].OnEnter.AddListener(OnAttackStart);
         animationEvents.Events[AnimationState.Attack01].OnEnd.AddListener(OnAttackEnd);
         animationEvents.Events[AnimationState.Attack01].OnOverHalf.AddListener(OnAttackOverHalf);
+        animationEvents.Events[AnimationState.Attack01].OnExit.AddListener(OnAttackExit);
         animationEvents.Events[AnimationState.Attack02].OnEnter.AddListener(OnAttackStart);
         animationEvents.Events[AnimationState.Attack02].OnEnd.AddListener(OnAttackEnd);
         animationEvents.Events[AnimationState.Attack02].OnOverHalf.AddListener(OnAttackOverHalf);
+        animationEvents.Events[AnimationState.Attack02].OnExit.AddListener(OnAttackExit);
         animationEvents.Events[AnimationState.Attack03].OnEnter.AddListener(OnAttackStart);
         animationEvents.Events[AnimationState.Attack03].OnEnd.AddListener(OnAttackEnd);
         animationEvents.Events[AnimationState.Attack03].OnOverHalf.AddListener(OnAttackOverHalf);
+        animationEvents.Events[AnimationState.Attack03].OnExit.AddListener(OnAttackExit);
         animationEvents.Events[AnimationState.Attack04].OnEnter.AddListener(OnAttackStart);
         animationEvents.Events[AnimationState.Attack04].OnEnd.AddListener(OnAttackEnd);
         animationEvents.Events[AnimationState.Attack04].OnOverHalf.AddListener(OnAttackOverHalf);
+        animationEvents.Events[AnimationState.Attack04].OnExit.AddListener(OnAttackExit);
         animationEvents.Events[AnimationState.Down].OnEnter.AddListener(OnDownStart);
         animationEvents.Events[AnimationState.Down].OnExit.AddListener(OnDownExit);
     }
@@ -109,6 +115,7 @@ public partial class Unit : Entity
             Decelerate();
         }
 
+        ProcessAttack();
         ProcessJump();
         ProcessHit();
         ProcessAnimation();
@@ -188,7 +195,7 @@ public partial class Unit : Entity
     private void ProcessAnimation()
     {
         animator.SetFloat(stiffnessDurationHash, stiffnessDuration);
-        if(downFlag)
+        if (downFlag)
         {
             downFlag = false;
             animator.SetTrigger(downHash);
@@ -235,7 +242,49 @@ public partial class Unit : Entity
             }
         }
     }
+    private void ProcessAttack()
+    {
+        if (combo > 0)
+        {
+            if (prevCombo != combo)
+            {
+                prevCombo = combo;
+                comboTick = 0;
+                hitBoxFlag = false;
+                return;
+            }
 
+            comboTick += Time.deltaTime;
+            if (comboTick > maxComboDelay)
+            {
+                combo = 0;
+                comboTick = 0;
+                hitBoxFlag = false;
+                comboFlag = true;
+                moveFlag = true;
+            }
+            else if (comboTick > comboDelay)
+            {
+                comboFlag = true;
+                moveFlag = true;
+                if (hitBoxFlag == false)
+                {
+                    hitBoxFlag = true;
+                    var curHitTarget = hitTarget;
+                    curHitTarget.x *= IsLeft ? -1f : 1f;
+                    var attackType = combo == maxCombo ? AttackType.Down : AttackType.Normal;
+                    CreateHitBox(transform.position + curHitTarget, attackType);
+                }
+            }
+
+        }
+        else
+        {
+            comboFlag = true;
+        }
+
+
+    }
     private void ProcessHit()
     {
         if (isStiff)
@@ -251,7 +300,7 @@ public partial class Unit : Entity
             }
         }
 
-        if(isStiff || isDown)
+        if (isStiff || isDown)
         {
             var power = isDown ? knockbackPower * 2f : knockbackPower;
             transform.position += power * knockbackDirection * Time.deltaTime;
@@ -260,28 +309,24 @@ public partial class Unit : Entity
     }
     public void OnAttackStart()
     {
-        hitBoxFlag = true;
-        comboFlag = false;
+        var clips = animator.GetCurrentAnimatorClipInfo(0);
+        if (clips != null && clips.Length > 0)
+        {
+            maxComboDelay = clips[0].clip.length;
+            comboDelay = maxComboDelay * 0.6f;
+        }
     }
 
     public void OnAttackOverHalf()
     {
-        comboFlag = true;
-        if (hitBoxFlag)
-        {
-            hitBoxFlag = false;
-            var curHitTarget = hitTarget;
-            curHitTarget.x *= IsLeft ? -1f : 1f;
-            var attackType = combo == 4 ? AttackType.Down : AttackType.Normal;
-            CreateHitBox(transform.position + curHitTarget, attackType);
-        }
     }
 
     public void OnAttackEnd()
     {
-        combo = 0;
-        comboFlag = true;
-        moveFlag = true;
+    }
+
+    public void OnAttackExit()
+    {
     }
 
     public void OnDownStart()
@@ -327,7 +372,7 @@ public partial class Unit : Entity
                 break;
         }
 
-        
+
         moveFlag = false;
         AttackFlag = false;
         this.knockbackDirection = (transform.position - beater.transform.position).normalized;
