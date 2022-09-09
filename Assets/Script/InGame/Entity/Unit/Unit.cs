@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Unit : Entity
+public partial class Unit : Entity
 {
     [SerializeField] private float maxSpeed;
     [SerializeField] private float jumpPower;
@@ -44,6 +44,7 @@ public class Unit : Entity
     private float maxComboDelay = 0.5f;
     private float comboTick = 0f;
     private bool comboFlag = true;
+    private int maxCombo = 4;
 
     private bool isCreateHitBox = false;
 
@@ -85,6 +86,8 @@ public class Unit : Entity
         animationEvents.Events[UnitState.Attack02].OnExit.AddListener(OnAttack02End);
         animationEvents.Events[UnitState.Attack03].OnEnter.AddListener(OnAttack03Start);
         animationEvents.Events[UnitState.Attack03].OnExit.AddListener(OnAttack03End);
+        animationEvents.Events[UnitState.Attack04].OnEnter.AddListener(OnAttack04Start);
+        animationEvents.Events[UnitState.Attack04].OnExit.AddListener(OnAttack04End);
     }
 
     private void FixedUpdate()
@@ -141,7 +144,7 @@ public class Unit : Entity
         if (comboFlag)
         {
             comboFlag = false;
-            if (combo < 3)
+            if (combo < maxCombo)
             {
                 combo++;
                 moveFlag = false;
@@ -295,6 +298,14 @@ public class Unit : Entity
     }
 
     public void OnAttack03End()
+    {
+    }
+
+    public void OnAttack04Start()
+    {
+    }
+
+    public void OnAttack04End()
     {
         combo = 0;
     }
