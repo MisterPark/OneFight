@@ -1,5 +1,12 @@
+using System.Collections.Generic;
 using UnityEngine;
 
+public class OnHitProcedure
+{
+    public float Damage { get; set; }
+    public Unit Unit { get; set; }
+    public AttackType AttackType { get; set; }
+}
 public partial class Unit : Entity
 {
     [SerializeField] private float maxSpeed;
@@ -21,6 +28,7 @@ public partial class Unit : Entity
     [SerializeField] private int isStiffHash;
     [SerializeField] private int stiffnessDurationHash;
     [SerializeField] private int downHash;
+    [SerializeField] private int guardHash;
 
     // Move
     private Vector3 prevDirection = Vector3.right;
@@ -33,6 +41,9 @@ public partial class Unit : Entity
     public float JumpPower => jumpPower;
 
     public bool IsLeft { get { return currentDirection.x < 0; } }
+    // Guard
+    private bool isGuard = false;
+    public bool IsGuard { get { return isGuard; } }
 
     // Combo
     public bool AttackFlag { get; set; } = true;
@@ -53,11 +64,17 @@ public partial class Unit : Entity
     private float stiffnessDuration = 0.5f;
     private float knockbackPower = 0.2f;
     private Vector3 knockbackDirection = Vector3.zero;
+    private float knockbackTick = 0f;
+    private float knockbackDuration = 0.2f;
+    private bool knockbackFlag = false;
     // Down
     private bool downFlag = false;
     private bool isDown = false;
 
     public Team Team { get; set; }
+
+    // OnHit
+    private List<OnHitProcedure> onHitProcedures = new List<OnHitProcedure>();
 
     // Stat
     private float hp = 100f;
@@ -79,6 +96,7 @@ public partial class Unit : Entity
         isStiffHash = Animator.StringToHash("IsStiff");
         stiffnessDurationHash = Animator.StringToHash("StiffnessDuration");
         downHash = Animator.StringToHash("IsDown");
+        guardHash = Animator.StringToHash("IsGuard");
     }
 
     private void Start()
@@ -106,6 +124,7 @@ public partial class Unit : Entity
     private void FixedUpdate()
     {
         IsMove = false;
+        isGuard = false;
     }
 
     private void LateUpdate()
@@ -118,6 +137,7 @@ public partial class Unit : Entity
         ProcessAttack();
         ProcessJump();
         ProcessHit();
+        ProcessKnockback();
         ProcessAnimation();
     }
 
@@ -133,6 +153,7 @@ public partial class Unit : Entity
 
     public void Move(Vector3 direction)
     {
+        if (isGuard) return;
         if (isDown) return;
         if (isStiff) return;
         if (!moveFlag) return;
@@ -160,6 +181,7 @@ public partial class Unit : Entity
 
     public void Attack()
     {
+        if(isGuard) return;
         if (isDown) return;
         if (isStiff) return;
         if (IsJump) return;
@@ -174,6 +196,19 @@ public partial class Unit : Entity
                 moveFlag = false;
             }
         }
+    }
+
+    public void Guard()
+    {
+        isGuard = true;
+    }
+
+    public void Knockback(Vector3 direction, float power)
+    {
+        knockbackFlag = true;
+        knockbackTick = 0f;
+        knockbackDirection = direction;
+        knockbackPower = power;
     }
 
     public void AddForce(Vector3 force)
@@ -204,6 +239,7 @@ public partial class Unit : Entity
         {
             animator.SetTrigger(isStiffHash);
         }
+        animator.SetBool(guardHash, isGuard);
         animator.SetInteger(comboHash, combo);
         animator.SetFloat(moveSpeedHash, currentSpeed);
         animator.SetFloat(velocityYHash, rigid.velocity.y);
@@ -287,6 +323,50 @@ public partial class Unit : Entity
     }
     private void ProcessHit()
     {
+        var hits = onHitProcedures.Count;
+        for (int i = 0; i < hits; i++)
+        {
+            var hit = onHitProcedures[i];
+            if(isGuard)
+            {
+                var to = hit.Unit.transform.position - transform.position;
+                hit.Unit.Knockback(to.normalized, knockbackPower * 4);
+            }
+            else
+            {
+                switch (hit.AttackType)
+                {
+                    case AttackType.Normal:
+                        isStiff = true;
+                        stiffnessTick = 0f;
+                        break;
+                    case AttackType.Down:
+                        downFlag = true;
+                        isDown = true;
+                        break;
+                    default:
+                        break;
+                }
+
+                moveFlag = false;
+                AttackFlag = false;
+
+                var power = isDown ? knockbackPower * 2f : knockbackPower;
+                this.knockbackDirection = (transform.position - hit.Unit.transform.position).normalized;
+                Knockback(knockbackDirection, power);
+
+                materialProperty.OnHit = true;
+
+                hp -= hit.Damage;
+                if (hp <= 0f)
+                {
+                    hp = 0f;
+                    Destroy(gameObject);
+                }
+            }
+        }
+        onHitProcedures.Clear();
+
         if (isStiff)
         {
             stiffnessTick += Time.deltaTime;
@@ -300,13 +380,24 @@ public partial class Unit : Entity
             }
         }
 
-        if (isStiff || isDown)
-        {
-            var power = isDown ? knockbackPower * 2f : knockbackPower;
-            transform.position += power * knockbackDirection * Time.deltaTime;
-        }
-
     }
+    private void ProcessKnockback()
+    {
+        if(knockbackFlag)
+        {
+            knockbackTick += Time.deltaTime;
+            if(knockbackTick > knockbackDuration)
+            {
+                knockbackFlag = false;
+                knockbackTick = 0f;
+            }
+            else
+            {
+                transform.position += knockbackDirection * knockbackPower * Time.deltaTime;
+            }
+        }
+    }
+
     public void OnAttackStart()
     {
         var clips = animator.GetCurrentAnimatorClipInfo(0);
@@ -358,31 +449,10 @@ public partial class Unit : Entity
 
     public void OnHit(float damage, Unit beater, AttackType attackType)
     {
-        switch (attackType)
-        {
-            case AttackType.Normal:
-                isStiff = true;
-                stiffnessTick = 0f;
-                break;
-            case AttackType.Down:
-                downFlag = true;
-                isDown = true;
-                break;
-            default:
-                break;
-        }
-
-
-        moveFlag = false;
-        AttackFlag = false;
-        this.knockbackDirection = (transform.position - beater.transform.position).normalized;
-        materialProperty.OnHit = true;
-
-        hp -= damage;
-        if (hp <= 0f)
-        {
-            hp = 0f;
-            Destroy(gameObject);
-        }
+        var procedure = new OnHitProcedure();
+        procedure.Damage = damage;
+        procedure.AttackType = attackType;
+        procedure.Unit = beater;
+        onHitProcedures.Add(procedure);
     }
 }

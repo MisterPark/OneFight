@@ -26,7 +26,11 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.X))
+        if (Input.GetKey(KeyCode.C))
+        {
+            unit.Guard();
+        }
+        if (Input.GetKeyDown(KeyCode.X))
         {
             unit.Attack();
         }

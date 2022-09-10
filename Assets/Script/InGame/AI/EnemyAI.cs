@@ -28,6 +28,7 @@ public class EnemyAI : MonoBehaviour
         Vector3 to;
         if (DetectPlayer(out to))
         {
+            //unit.Guard();
             FollowTarget(Player.Self.transform);
             AttackTarget(Player.Self.transform);
         }

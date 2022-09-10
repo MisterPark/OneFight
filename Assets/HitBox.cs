@@ -29,7 +29,6 @@ public class HitBox : MonoBehaviour
         {
             if (target.Team != Team)
             {
-
                 target.OnHit(Damage, Owner, AttackType);
                 Destroy(gameObject);
             }
