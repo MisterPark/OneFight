@@ -354,7 +354,7 @@ public partial class Unit : Entity
                 moveFlag = false;
                 AttackFlag = false;
 
-                var power = isDown ? 0.8f : 0.4f;
+                var power = isDown ? 5f : 0.4f;
                 this.knockbackDirection = (transform.position - hit.Unit.transform.position).normalized;
                 Knockback(knockbackDirection, power);
 
