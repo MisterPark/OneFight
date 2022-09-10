@@ -330,7 +330,7 @@ public partial class Unit : Entity
             if(isGuard)
             {
                 var to = hit.Unit.transform.position - transform.position;
-                hit.Unit.Knockback(to.normalized, knockbackPower * 4);
+                hit.Unit.Knockback(to.normalized, 0.8f);
             }
             else
             {
@@ -351,7 +351,7 @@ public partial class Unit : Entity
                 moveFlag = false;
                 AttackFlag = false;
 
-                var power = isDown ? knockbackPower * 2f : knockbackPower;
+                var power = isDown ? 0.4f : 0.2f;
                 this.knockbackDirection = (transform.position - hit.Unit.transform.position).normalized;
                 Knockback(knockbackDirection, power);
 
