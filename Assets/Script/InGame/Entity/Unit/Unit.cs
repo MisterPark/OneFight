@@ -65,7 +65,7 @@ public partial class Unit : Entity
     private float knockbackPower = 0.2f;
     private Vector3 knockbackDirection = Vector3.zero;
     private float knockbackTick = 0f;
-    private float knockbackDuration = 0.2f;
+    private float knockbackDuration = 0.5f;
     private bool knockbackFlag = false;
     // Down
     private bool downFlag = false;
@@ -330,7 +330,7 @@ public partial class Unit : Entity
             if(isGuard)
             {
                 var to = hit.Unit.transform.position - transform.position;
-                hit.Unit.Knockback(to.normalized, 0.8f);
+                hit.Unit.Knockback(to.normalized, 0.3f);
             }
             else
             {
@@ -354,7 +354,7 @@ public partial class Unit : Entity
                 moveFlag = false;
                 AttackFlag = false;
 
-                var power = isDown ? 5f : 0.4f;
+                var power = isDown ? 2f : 0.3f;
                 this.knockbackDirection = (transform.position - hit.Unit.transform.position).normalized;
                 Knockback(knockbackDirection, power);
 
