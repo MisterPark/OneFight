@@ -343,6 +343,9 @@ public partial class Unit : Entity
                     case AttackType.Down:
                         downFlag = true;
                         isDown = true;
+                        currentDirection = (hit.Unit.transform.position - transform.position).normalized;
+                        currentDirection = new Vector3(currentDirection.x, 0f, 0f).normalized;
+                        spriteRenderer.flipX = IsLeft;
                         break;
                     default:
                         break;
@@ -351,7 +354,7 @@ public partial class Unit : Entity
                 moveFlag = false;
                 AttackFlag = false;
 
-                var power = isDown ? 0.4f : 0.2f;
+                var power = isDown ? 0.8f : 0.4f;
                 this.knockbackDirection = (transform.position - hit.Unit.transform.position).normalized;
                 Knockback(knockbackDirection, power);
 
