@@ -663,6 +663,7 @@ MonoBehaviour:
   jumpPower: 5
   hitTarget: {x: 0.27, y: 0.27, z: 0}
   hitBox: {fileID: 5944524527882210571, guid: 7bf3e2095c1df494aa6d17207c4958be, type: 3}
+  hitEffect: {fileID: 6000534684514740442, guid: e89d5f31db11bcf44b729ecb4cf5bd36, type: 3}
   spriteRenderer: {fileID: 875898234}
   animator: {fileID: 875898236}
   animationEvents: {fileID: 875898240}
@@ -675,6 +676,8 @@ MonoBehaviour:
   isStiffHash: -1965561208
   stiffnessDurationHash: 466305958
   downHash: -1167163391
+  guardHash: 1773689710
+  isDeadHash: 1270110494
 --- !u!50 &875898238
 Rigidbody2D:
   serializedVersion: 4
@@ -1568,6 +1571,7 @@ MonoBehaviour:
   jumpPower: 5
   hitTarget: {x: 0.27, y: 0.27, z: 0}
   hitBox: {fileID: 5944524527882210571, guid: 7bf3e2095c1df494aa6d17207c4958be, type: 3}
+  hitEffect: {fileID: 6000534684514740442, guid: e89d5f31db11bcf44b729ecb4cf5bd36, type: 3}
   spriteRenderer: {fileID: 1522358656}
   animator: {fileID: 1522358660}
   animationEvents: {fileID: 1522358663}
@@ -1580,6 +1584,8 @@ MonoBehaviour:
   isStiffHash: -1965561208
   stiffnessDurationHash: 466305958
   downHash: -1167163391
+  guardHash: 1773689710
+  isDeadHash: 1270110494
 --- !u!114 &1522358662
 MonoBehaviour:
   m_ObjectHideFlags: 0

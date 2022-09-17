@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class OnHitProcedure
 {
+    public Vector3 HitPoint;
     public float Damage { get; set; }
     public Unit Unit { get; set; }
     public AttackType AttackType { get; set; }
@@ -14,6 +15,8 @@ public partial class Unit : Entity
 
     [SerializeField] private Vector3 hitTarget;
     [SerializeField] private GameObject hitBox;
+
+    [SerializeField] private GameObject hitEffect;
 
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Animator animator;
@@ -337,10 +340,11 @@ public partial class Unit : Entity
         for (int i = 0; i < hits; i++)
         {
             var hit = onHitProcedures[i];
+            var toBeater = hit.Unit.transform.position - transform.position;
+            var toVictim = transform.position - hit.Unit.transform.position;
             if (isGuard)
             {
-                var to = hit.Unit.transform.position - transform.position;
-                hit.Unit.Knockback(to.normalized, 0.3f);
+                hit.Unit.Knockback(toBeater.normalized, 0.3f);
             }
             else
             {
@@ -353,7 +357,7 @@ public partial class Unit : Entity
                     case AttackType.Down:
                         downFlag = true;
                         isDown = true;
-                        currentDirection = (hit.Unit.transform.position - transform.position).normalized;
+                        currentDirection = toBeater.normalized;
                         currentDirection = new Vector3(currentDirection.x, 0f, 0f).normalized;
                         spriteRenderer.flipX = IsLeft;
                         break;
@@ -365,7 +369,7 @@ public partial class Unit : Entity
                 AttackFlag = false;
 
                 var power = isDown ? 2f : 0.3f;
-                this.knockbackDirection = (transform.position - hit.Unit.transform.position).normalized;
+                this.knockbackDirection = toVictim.normalized;
                 Knockback(knockbackDirection, power);
 
                 materialProperty.OnHit = true;
@@ -377,6 +381,7 @@ public partial class Unit : Entity
                     isDead = true;
                 }
             }
+            CreateHitEffect(hit.HitPoint, toVictim.normalized);
         }
         onHitProcedures.Clear();
 
@@ -460,9 +465,21 @@ public partial class Unit : Entity
         }
     }
 
-    public void OnHit(float damage, Unit beater, AttackType attackType)
+    public void CreateHitEffect(Vector3 target, Vector3 direction)
+    {
+        GameObject hitEffectObj = Instantiate(hitEffect);
+        hitEffectObj.transform.position = target;
+        var spriteRenderer = hitEffectObj.GetComponent<SpriteRenderer>();
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.flipX = direction.x < 0;
+        }
+    }
+
+    public void OnHit(Vector3 hitPoint, float damage, Unit beater, AttackType attackType)
     {
         var procedure = new OnHitProcedure();
+        procedure.HitPoint = hitPoint;
         procedure.Damage = damage;
         procedure.AttackType = attackType;
         procedure.Unit = beater;

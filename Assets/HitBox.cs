@@ -29,7 +29,7 @@ public class HitBox : MonoBehaviour
         {
             if (target.Team != Team && target.IsDead == false)
             {
-                target.OnHit(Damage, Owner, AttackType);
+                target.OnHit(transform.position, Damage, Owner, AttackType);
                 Destroy(gameObject);
             }
         }
