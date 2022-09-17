@@ -27,7 +27,7 @@ public class HitBox : MonoBehaviour
         Unit target = collision.gameObject.GetComponent<Unit>();
         if (target != null)
         {
-            if (target.Team != Team)
+            if (target.Team != Team && target.IsDead == false)
             {
                 target.OnHit(Damage, Owner, AttackType);
                 Destroy(gameObject);

@@ -29,6 +29,7 @@ public partial class Unit : Entity
     [SerializeField] private int stiffnessDurationHash;
     [SerializeField] private int downHash;
     [SerializeField] private int guardHash;
+    [SerializeField] private int isDeadHash;
 
     // Move
     private Vector3 prevDirection = Vector3.right;
@@ -77,8 +78,12 @@ public partial class Unit : Entity
     private List<OnHitProcedure> onHitProcedures = new List<OnHitProcedure>();
 
     // Stat
-    private float hp = 100f;
+    private float hp = 10f;
     private float damage = 1f;
+
+    // Death
+    private bool isDead = false;
+    public bool IsDead => isDead;
 
 
     private void OnValidate()
@@ -97,6 +102,7 @@ public partial class Unit : Entity
         stiffnessDurationHash = Animator.StringToHash("StiffnessDuration");
         downHash = Animator.StringToHash("IsDown");
         guardHash = Animator.StringToHash("IsGuard");
+        isDeadHash = Animator.StringToHash("IsDead");
     }
 
     private void Start()
@@ -153,6 +159,7 @@ public partial class Unit : Entity
 
     public void Move(Vector3 direction)
     {
+        if (isDead) return;
         if (isGuard) return;
         if (isDown) return;
         if (isStiff) return;
@@ -172,6 +179,7 @@ public partial class Unit : Entity
 
     public void Jump()
     {
+        if (isDead) return;
         if (isDown) return;
         if (isStiff) return;
         IsJump = true;
@@ -181,7 +189,8 @@ public partial class Unit : Entity
 
     public void Attack()
     {
-        if(isGuard) return;
+        if (isDead) return;
+        if (isGuard) return;
         if (isDown) return;
         if (isStiff) return;
         if (IsJump) return;
@@ -229,6 +238,7 @@ public partial class Unit : Entity
 
     private void ProcessAnimation()
     {
+        animator.SetBool(isDeadHash, isDead);
         animator.SetFloat(stiffnessDurationHash, stiffnessDuration);
         if (downFlag)
         {
@@ -327,7 +337,7 @@ public partial class Unit : Entity
         for (int i = 0; i < hits; i++)
         {
             var hit = onHitProcedures[i];
-            if(isGuard)
+            if (isGuard)
             {
                 var to = hit.Unit.transform.position - transform.position;
                 hit.Unit.Knockback(to.normalized, 0.3f);
@@ -364,7 +374,7 @@ public partial class Unit : Entity
                 if (hp <= 0f)
                 {
                     hp = 0f;
-                    Destroy(gameObject);
+                    isDead = true;
                 }
             }
         }
@@ -386,10 +396,10 @@ public partial class Unit : Entity
     }
     private void ProcessKnockback()
     {
-        if(knockbackFlag)
+        if (knockbackFlag)
         {
             knockbackTick += Time.deltaTime;
-            if(knockbackTick > knockbackDuration)
+            if (knockbackTick > knockbackDuration)
             {
                 knockbackFlag = false;
                 knockbackTick = 0f;
