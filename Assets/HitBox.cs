@@ -13,12 +13,17 @@ public class HitBox : MonoBehaviour
     private float lifeTime = 0.4f;
     private float lifeTick = 0f;
 
+    private void OnEnable()
+    {
+        lifeTick = 0f;
+    }
+
     private void Update()
     {
         lifeTick += Time.deltaTime;
         if (lifeTick > lifeTime)
         {
-            Destroy(gameObject);
+            ObjectPool.Instance.Free(gameObject);
         }
     }
 
@@ -30,7 +35,7 @@ public class HitBox : MonoBehaviour
             if (target.Team != Team && target.IsDead == false)
             {
                 target.OnHit(transform.position, Damage, Owner, AttackType);
-                Destroy(gameObject);
+                ObjectPool.Instance.Free(gameObject);
             }
         }
     }

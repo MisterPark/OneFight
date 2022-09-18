@@ -16,6 +16,12 @@ public class StrikeEffect : MonoBehaviour
     {
         strikeHash = Animator.StringToHash("Strike");
     }
+
+    private void OnEnable()
+    {
+        tick = 0f;
+    }
+
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -27,7 +33,7 @@ public class StrikeEffect : MonoBehaviour
         tick += Time.deltaTime;
         if(tick > time)
         {
-            Destroy(gameObject);
+            ObjectPool.Instance.Free(gameObject);
         }
     }
 

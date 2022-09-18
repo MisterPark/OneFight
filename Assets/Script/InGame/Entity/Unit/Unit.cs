@@ -14,9 +14,6 @@ public partial class Unit : Entity
     [SerializeField] private float jumpPower;
 
     [SerializeField] private Vector3 hitTarget;
-    [SerializeField] private GameObject hitBox;
-
-    [SerializeField] private GameObject hitEffect;
 
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Animator animator;
@@ -453,7 +450,7 @@ public partial class Unit : Entity
 
     public void CreateHitBox(Vector3 target, AttackType attackType)
     {
-        GameObject hitBoxObj = Instantiate(hitBox);
+        GameObject hitBoxObj = ObjectPool.Instance.Allocate("HitBox");
         hitBoxObj.transform.position = target;
         var box = hitBoxObj.GetComponent<HitBox>();
         if (box != null)
@@ -467,7 +464,7 @@ public partial class Unit : Entity
 
     public void CreateHitEffect(Vector3 target, Vector3 direction)
     {
-        GameObject hitEffectObj = Instantiate(hitEffect);
+        GameObject hitEffectObj = ObjectPool.Instance.Allocate("StrikeEffect");
         hitEffectObj.transform.position = target;
         var spriteRenderer = hitEffectObj.GetComponent<SpriteRenderer>();
         if (spriteRenderer != null)
