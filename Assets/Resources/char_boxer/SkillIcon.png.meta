@@ -1,31 +1,19 @@
 fileFormatVersion: 2
-guid: ce3dfb6938fa3b64c878b845914ae926
+guid: 7c05d23d36a41aa44ab68f203c258bcf
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3942398335140728678
-    second: redman_jump_0
+      213: 66803156277648838
+    second: SkillIcon_0
   - first:
-      213: 812302136842931308
-    second: redman_jump_1
+      213: -4545738352749646432
+    second: SkillIcon_1
   - first:
-      213: -4340904235793214598
-    second: redman_jump_2
+      213: 5510465169304295043
+    second: SkillIcon_2
   - first:
-      213: -2986758443036348284
-    second: redman_jump_3
-  - first:
-      213: -7656624857941972337
-    second: redman_jump_4
-  - first:
-      213: 2935744119285529831
-    second: redman_jump_5
-  - first:
-      213: 842074568815322657
-    second: redman_jump_6
-  - first:
-      213: -5293127932350682519
-    second: redman_jump_7
+      213: 8158461246853394414
+    second: SkillIcon_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -115,169 +103,85 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: redman_jump_0
+      name: SkillIcon_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 96
-        height: 96
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 66f8729e56636b630800000000000000
-      internalID: 3942398335140728678
+      spriteID: 6cdddcfdd155de000800000000000000
+      internalID: 66803156277648838
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: redman_jump_1
+      name: SkillIcon_1
       rect:
         serializedVersion: 2
-        x: 96
+        x: 22
         y: 0
-        width: 96
-        height: 96
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c6c40dc5d70e54b00800000000000000
-      internalID: 812302136842931308
+      spriteID: 0adec727d0b4ae0c0800000000000000
+      internalID: -4545738352749646432
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: redman_jump_2
+      name: SkillIcon_2
       rect:
         serializedVersion: 2
-        x: 192
+        x: 44
         y: 0
-        width: 96
-        height: 96
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a739e8db89202c3c0800000000000000
-      internalID: -4340904235793214598
+      spriteID: 3869b8330ea197c40800000000000000
+      internalID: 5510465169304295043
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: redman_jump_3
+      name: SkillIcon_3
       rect:
         serializedVersion: 2
-        x: 288
+        x: 66
         y: 0
-        width: 96
-        height: 96
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4807be44507ec86d0800000000000000
-      internalID: -2986758443036348284
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: redman_jump_4
-      rect:
-        serializedVersion: 2
-        x: 384
-        y: 0
-        width: 96
-        height: 96
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f8a61fb12443eb590800000000000000
-      internalID: -7656624857941972337
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: redman_jump_5
-      rect:
-        serializedVersion: 2
-        x: 480
-        y: 0
-        width: 96
-        height: 96
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7ecb475e8bbddb820800000000000000
-      internalID: 2935744119285529831
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: redman_jump_6
-      rect:
-        serializedVersion: 2
-        x: 576
-        y: 0
-        width: 96
-        height: 96
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 126a0acdb56afab00800000000000000
-      internalID: 842074568815322657
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: redman_jump_7
-      rect:
-        serializedVersion: 2
-        x: 672
-        y: 0
-        width: 96
-        height: 96
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 96a2a8190380b86b0800000000000000
-      internalID: -5293127932350682519
+      spriteID: eefac74574da83170800000000000000
+      internalID: 8158461246853394414
       vertices: []
       indices: 
       edges: []
@@ -285,7 +189,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 107605d40a6b74b4382f169d598a1abe
+    spriteID: 025f29b723140e641a6ae0762f02b600
     internalID: 0
     vertices: []
     indices: 
