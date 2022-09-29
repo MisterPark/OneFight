@@ -51,10 +51,11 @@ public class Player : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            GameObject go = ObjectPool.Instance.Allocate("Textbox");
-            var textbox = go.GetComponent<Textbox>();
-            textbox.Unit = unit;
-            textbox.TotalOutput = "음하음하음하음하음하음하음하음하";
+            //GameObject go = ObjectPool.Instance.Allocate("Textbox");
+            //var textbox = go.GetComponent<Textbox>();
+            //textbox.Unit = unit;
+            //textbox.TotalOutput = "음하음하음하음하음하음하음하음하";
+            
         }
         
 

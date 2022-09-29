@@ -369,6 +369,11 @@ public partial class Unit : Entity
                 this.knockbackDirection = toVictim.normalized;
                 Knockback(knockbackDirection, power);
 
+                if(gameObject.IsPlayer())
+                {
+                    Cam.Instance.Shake();
+                }
+
                 materialProperty.OnHit = true;
 
                 hp -= hit.Damage;

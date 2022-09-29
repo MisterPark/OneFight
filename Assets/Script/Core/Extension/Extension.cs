@@ -8,7 +8,7 @@ public static class Extension
     {
         if (gameObject == null) return false;
 
-        if (gameObject == Player.Self) return true;
+        if (gameObject == Player.Self.gameObject) return true;
 
         return false;
     }
