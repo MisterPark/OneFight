@@ -17,3 +17,5 @@ MonoBehaviour:
     Value: {fileID: 5944524527882210571, guid: 7bf3e2095c1df494aa6d17207c4958be, type: 3}
   - Key: StrikeEffect
     Value: {fileID: 6000534684514740442, guid: e89d5f31db11bcf44b729ecb4cf5bd36, type: 3}
+  - Key: Textbox
+    Value: {fileID: 5603421271461512613, guid: ba1d20d2854f6c84faa5bb9a3a2f14f5, type: 3}
