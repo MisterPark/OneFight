@@ -2635,6 +2635,8 @@ MonoBehaviour:
   downHash: -1167163391
   guardHash: 1773689710
   isDeadHash: 1270110494
+  skill01Hash: -941258041
+  isSkill01: 0
 --- !u!50 &875898238
 Rigidbody2D:
   serializedVersion: 4
@@ -4802,6 +4804,8 @@ MonoBehaviour:
   downHash: -1167163391
   guardHash: 1773689710
   isDeadHash: 1270110494
+  skill01Hash: -941258041
+  isSkill01: 0
 --- !u!114 &1522358662
 MonoBehaviour:
   m_ObjectHideFlags: 0

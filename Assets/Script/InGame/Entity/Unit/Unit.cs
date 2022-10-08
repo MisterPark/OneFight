@@ -484,7 +484,7 @@ public partial class Unit : Entity
 
     public void OnSkillStart()
     {
-        
+        ThunderBoltEffect.Create(transform.position, IsLeft ? Vector3.left : Vector3.right);
     }
 
     public void OnSkillOverHalf()
