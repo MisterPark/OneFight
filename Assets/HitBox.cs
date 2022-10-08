@@ -39,4 +39,20 @@ public class HitBox : MonoBehaviour
             }
         }
     }
+
+    public static HitBox Create(Unit owner, Vector3 target, AttackType attackType)
+    {
+        GameObject hitBoxObj = ObjectPool.Instance.Allocate("HitBox");
+        hitBoxObj.transform.position = target;
+        var box = hitBoxObj.GetComponent<HitBox>();
+        if (box != null)
+        {
+            box.Owner = owner;
+            box.Team = owner.Team;
+            box.Damage = owner.Damage;
+            box.AttackType = attackType;
+        }
+
+        return box;
+    }
 }

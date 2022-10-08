@@ -57,7 +57,27 @@ public class Player : MonoBehaviour
             //textbox.TotalOutput = "음하음하음하음하음하음하음하음하";
             
         }
-        
+
+        if(Input.GetKeyDown(KeyCode.A))
+        {
+            unit.Skill01();
+        }
+
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+
+        }
+
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+
+        }
+
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+
+        }
+
 
     }
 

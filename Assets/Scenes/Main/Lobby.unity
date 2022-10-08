@@ -1597,6 +1597,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 8712629722988578233, guid: c514d9f6a7c913b4d868b2198a6ac948, type: 3}
+      propertyPath: skillDatas.Array.data[1].data
+      value: 
+      objectReference: {fileID: 11400000, guid: 14275313a2b88b44a8d4e6b33ac19418, type: 2}
+    - target: {fileID: 8712629722988578233, guid: c514d9f6a7c913b4d868b2198a6ac948, type: 3}
+      propertyPath: skillDatas.Array.data[1].kind
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8712629722988578233, guid: c514d9f6a7c913b4d868b2198a6ac948, type: 3}
+      propertyPath: skillDatas.Array.data[2].kind
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8712629722988578233, guid: c514d9f6a7c913b4d868b2198a6ac948, type: 3}
+      propertyPath: skillDatas.Array.data[3].kind
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8712629722988578233, guid: c514d9f6a7c913b4d868b2198a6ac948, type: 3}
+      propertyPath: skillDatas.Array.data[4].kind
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c514d9f6a7c913b4d868b2198a6ac948, type: 3}
 --- !u!1 &547447685

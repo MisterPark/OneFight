@@ -11,6 +11,10 @@ public enum AnimationState : byte
     Attack03,
     Attack04,
     Down,
+    Skill01,
+    Skill02,
+    Skill03,
+    Skill04,
     End,
 }
 

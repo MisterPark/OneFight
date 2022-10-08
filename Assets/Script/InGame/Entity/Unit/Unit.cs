@@ -30,6 +30,7 @@ public partial class Unit : Entity
     [SerializeField] private int downHash;
     [SerializeField] private int guardHash;
     [SerializeField] private int isDeadHash;
+    [SerializeField] private int skill01Hash;
 
     // Move
     private Vector3 prevDirection = Vector3.right;
@@ -80,10 +81,15 @@ public partial class Unit : Entity
     // Stat
     private float hp = 10f;
     private float damage = 1f;
+    public float Damage => damage;
 
     // Death
     private bool isDead = false;
     public bool IsDead => isDead;
+
+    // Skill
+    Skill[] skills = new Skill[4];
+    public bool isSkill01 = false;
 
 
     private void OnValidate()
@@ -103,6 +109,7 @@ public partial class Unit : Entity
         downHash = Animator.StringToHash("IsDown");
         guardHash = Animator.StringToHash("IsGuard");
         isDeadHash = Animator.StringToHash("IsDead");
+        skill01Hash = Animator.StringToHash("Skill01");
     }
 
     private void Start()
@@ -125,6 +132,11 @@ public partial class Unit : Entity
         animationEvents.Events[AnimationState.Attack04].OnExit.AddListener(OnAttackExit);
         animationEvents.Events[AnimationState.Down].OnEnter.AddListener(OnDownStart);
         animationEvents.Events[AnimationState.Down].OnExit.AddListener(OnDownExit);
+        animationEvents.Events[AnimationState.Skill01].OnEnter.AddListener(OnSkillStart);
+        animationEvents.Events[AnimationState.Skill01].OnEnd.AddListener(OnSkillEnd);
+        animationEvents.Events[AnimationState.Skill01].OnOverHalf.AddListener(OnSkillOverHalf);
+
+        
     }
 
     private void FixedUpdate()
@@ -140,6 +152,7 @@ public partial class Unit : Entity
             Decelerate();
         }
 
+        ProcessSkill();
         ProcessAttack();
         ProcessJump();
         ProcessHit();
@@ -212,6 +225,33 @@ public partial class Unit : Entity
         isGuard = true;
     }
 
+    public void Skill01()
+    {
+        if (isDead) return;
+        if (isGuard) return;
+        if (isDown) return;
+        if (isStiff) return;
+        if (IsJump) return;
+        if (!AttackFlag) return;
+
+        isSkill01 = true;
+    }
+
+    public void Skill02()
+    {
+
+    }
+
+    public void Skill03()
+    {
+
+    }
+
+    public void Skill04()
+    {
+
+    }
+
     public void Knockback(Vector3 direction, float power)
     {
         knockbackFlag = true;
@@ -250,6 +290,7 @@ public partial class Unit : Entity
             animator.SetTrigger(isStiffHash);
         }
         animator.SetBool(guardHash, isGuard);
+        animator.SetBool(skill01Hash, isSkill01);
         animator.SetInteger(comboHash, combo);
         animator.SetFloat(moveSpeedHash, currentSpeed);
         animator.SetFloat(velocityYHash, rigid.velocity.y);
@@ -319,7 +360,7 @@ public partial class Unit : Entity
                     var curHitTarget = hitTarget;
                     curHitTarget.x *= IsLeft ? -1f : 1f;
                     var attackType = combo == maxCombo ? AttackType.Down : AttackType.Normal;
-                    CreateHitBox(transform.position + curHitTarget, attackType);
+                    HitBox.Create(this, transform.position + curHitTarget, attackType);
                 }
             }
 
@@ -383,7 +424,8 @@ public partial class Unit : Entity
                     isDead = true;
                 }
             }
-            CreateHitEffect(hit.HitPoint, toVictim.normalized);
+
+            StrikeEffect.Create(hit.HitPoint, toVictim.normalized);
         }
         onHitProcedures.Clear();
 
@@ -418,6 +460,10 @@ public partial class Unit : Entity
         }
     }
 
+    private void ProcessSkill()
+    {
+    }
+
     public void OnAttackStart()
     {
         var clips = animator.GetCurrentAnimatorClipInfo(0);
@@ -436,6 +482,23 @@ public partial class Unit : Entity
     {
     }
 
+    public void OnSkillStart()
+    {
+        
+    }
+
+    public void OnSkillOverHalf()
+    {
+        var curHitTarget = hitTarget;
+        curHitTarget.x *= IsLeft ? -1f : 1f;
+        HitBox.Create(this, transform.position + curHitTarget, AttackType.Down);
+    }
+
+    public void OnSkillEnd()
+    {
+        isSkill01 = false;
+    }
+
     public void OnAttackExit()
     {
     }
@@ -451,31 +514,6 @@ public partial class Unit : Entity
         isDown = false;
         moveFlag = true;
         AttackFlag = true;
-    }
-
-    public void CreateHitBox(Vector3 target, AttackType attackType)
-    {
-        GameObject hitBoxObj = ObjectPool.Instance.Allocate("HitBox");
-        hitBoxObj.transform.position = target;
-        var box = hitBoxObj.GetComponent<HitBox>();
-        if (box != null)
-        {
-            box.Owner = this;
-            box.Team = Team;
-            box.Damage = damage;
-            box.AttackType = attackType;
-        }
-    }
-
-    public void CreateHitEffect(Vector3 target, Vector3 direction)
-    {
-        GameObject hitEffectObj = ObjectPool.Instance.Allocate("StrikeEffect");
-        hitEffectObj.transform.position = target;
-        var spriteRenderer = hitEffectObj.GetComponent<SpriteRenderer>();
-        if (spriteRenderer != null)
-        {
-            spriteRenderer.flipX = direction.x < 0;
-        }
     }
 
     public void OnHit(Vector3 hitPoint, float damage, Unit beater, AttackType attackType)

@@ -7,6 +7,11 @@ public class GameManager : MonoBehaviour
     private static GameManager instance;
     public static GameManager Instance => instance;
 
+#if UNITY_EDITOR
+    [ArrayElementTitle("kind")]
+#endif
+    public SkillElement[] skillDatas = new SkillElement[(int)SkillKind.End];
+
     private void Awake()
     {
         if(instance == null)

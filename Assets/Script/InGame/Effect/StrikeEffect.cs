@@ -20,10 +20,6 @@ public class StrikeEffect : MonoBehaviour
     private void OnEnable()
     {
         tick = 0f;
-    }
-
-    void Start()
-    {
         animator = GetComponent<Animator>();
         strikeType = Random.Range(0, 2);
     }
@@ -45,5 +41,19 @@ public class StrikeEffect : MonoBehaviour
     private void ProcessAnimation()
     {
         animator.SetInteger(strikeHash, strikeType);
+    }
+
+    public static StrikeEffect Create(Vector3 target, Vector3 direction)
+    {
+        GameObject hitEffectObj = ObjectPool.Instance.Allocate("StrikeEffect");
+        hitEffectObj.transform.position = target;
+        var effect = hitEffectObj.GetComponent<StrikeEffect>();
+        var spriteRenderer = hitEffectObj.GetComponent<SpriteRenderer>();
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.flipX = direction.x < 0;
+        }
+
+        return effect;
     }
 }
