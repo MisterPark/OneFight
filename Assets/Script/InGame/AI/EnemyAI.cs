@@ -23,20 +23,20 @@ public class EnemyAI : MonoBehaviour
 
     private void Update()
     {
-        if (Player.Self == null) return;
+        if (Player.Instance == null) return;
 
         Vector3 to;
         if (DetectPlayer(out to))
         {
             //unit.Guard();
-            FollowTarget(Player.Self.transform);
-            AttackTarget(Player.Self.transform);
+            FollowTarget(Player.Instance.transform);
+            AttackTarget(Player.Instance.transform);
         }
     }
 
     public bool DetectPlayer(out Vector3 to)
     {
-        Vector3 playerPos = Player.Self.transform.position;
+        Vector3 playerPos = Player.Instance.transform.position;
         Vector3 myPos = transform.position;
         playerPos.y = 0f;
         myPos.y = 0f;
@@ -50,7 +50,7 @@ public class EnemyAI : MonoBehaviour
 
     public void FollowTarget(Transform target)
     {
-        Vector3 playerPos = Player.Self.transform.position;
+        Vector3 playerPos = Player.Instance.transform.position;
         Vector3 myPos = transform.position;
         playerPos.y = 0f;
         myPos.y = 0f;
@@ -63,7 +63,7 @@ public class EnemyAI : MonoBehaviour
 
     public void AttackTarget(Transform target)
     {
-        Vector3 playerPos = Player.Self.transform.position;
+        Vector3 playerPos = Player.Instance.transform.position;
         Vector3 myPos = transform.position;
         playerPos.y = 0f;
         myPos.y = 0f;

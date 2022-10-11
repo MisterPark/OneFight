@@ -32,6 +32,15 @@ public enum SkillKind
     End
 }
 
+public enum SkillNumber
+{
+    Skill01,
+    Skill02,
+    Skill03,
+    Skill04,
+    End
+}
+
 [System.Serializable]
 public class SkillElement
 {

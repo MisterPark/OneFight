@@ -32,9 +32,9 @@ public class Cam : MonoBehaviour
 
     private void LateUpdate()
     {
-        if(Player.Self != null)
+        if(Player.Instance != null)
         {
-            var playerPosition = Player.Self.transform.position;
+            var playerPosition = Player.Instance.transform.position;
             var playerOffset = new Vector3(playerPosition.x, playerPosition.y + 0.5f, transform.position.z);
             transform.position = playerOffset + shakeOffset;
         }
