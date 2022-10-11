@@ -2644,7 +2644,6 @@ MonoBehaviour:
   - data: {fileID: 11400000, guid: 282f7c66617cd52429e0cbb0168f2a53, type: 2}
   - data: {fileID: 11400000, guid: 9afbc82ca5e38914c8cca5c9d569b919, type: 2}
   - data: {fileID: 11400000, guid: 1773d9b119931e640a3772cf520176e1, type: 2}
-  skillActivation: 00000000
 --- !u!50 &875898238
 Rigidbody2D:
   serializedVersion: 4
@@ -4822,7 +4821,6 @@ MonoBehaviour:
   - data: {fileID: 0}
   - data: {fileID: 0}
   - data: {fileID: 0}
-  skillActivation: 00000000
 --- !u!114 &1522358662
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6480,6 +6478,18 @@ PrefabInstance:
     - target: {fileID: 2955261772962326622, guid: 4075c23160f65b84d9b4d9f51e9fb951, type: 3}
       propertyPath: m_Name
       value: SkillPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 3804128804980317535, guid: 4075c23160f65b84d9b4d9f51e9fb951, type: 3}
+      propertyPath: number
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4381227644170739660, guid: 4075c23160f65b84d9b4d9f51e9fb951, type: 3}
+      propertyPath: number
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8233871434524114413, guid: 4075c23160f65b84d9b4d9f51e9fb951, type: 3}
+      propertyPath: number
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4075c23160f65b84d9b4d9f51e9fb951, type: 3}
