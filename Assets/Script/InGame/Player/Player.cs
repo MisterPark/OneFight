@@ -5,9 +5,11 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     private static Player player = null;
-    public static Player Self => player;
+    public static Player Instance => player;
 
     [SerializeField] private Unit unit;
+
+    public Unit Unit => unit;
 
     private void Awake()
     {
@@ -60,22 +62,22 @@ public class Player : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.A))
         {
-            unit.Skill01();
+            unit.Skill(0);
         }
 
         if (Input.GetKeyDown(KeyCode.S))
         {
-
+            unit.Skill(1);
         }
 
         if (Input.GetKeyDown(KeyCode.D))
         {
-
+            unit.Skill(2);
         }
 
         if (Input.GetKeyDown(KeyCode.F))
         {
-
+            unit.Skill(3);
         }
 
 

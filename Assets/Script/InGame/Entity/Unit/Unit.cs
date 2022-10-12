@@ -31,6 +31,9 @@ public partial class Unit : Entity
     [SerializeField] private int guardHash;
     [SerializeField] private int isDeadHash;
     [SerializeField] private int skill01Hash;
+    [SerializeField] private int skill02Hash;
+    [SerializeField] private int skill03Hash;
+    [SerializeField] private int skill04Hash;
 
     // Move
     private Vector3 prevDirection = Vector3.right;
@@ -88,9 +91,11 @@ public partial class Unit : Entity
     public bool IsDead => isDead;
 
     // Skill
-    Skill[] skills = new Skill[4];
-    public bool isSkill01 = false;
+    [SerializeField] private Skill[] skills = new Skill[4];
+    public Skill[] Skills => skills;
 
+    // Invincible
+    private bool isInvincible = false;
 
     private void OnValidate()
     {
@@ -110,6 +115,9 @@ public partial class Unit : Entity
         guardHash = Animator.StringToHash("IsGuard");
         isDeadHash = Animator.StringToHash("IsDead");
         skill01Hash = Animator.StringToHash("Skill01");
+        skill02Hash = Animator.StringToHash("Skill02");
+        skill03Hash = Animator.StringToHash("Skill03");
+        skill04Hash = Animator.StringToHash("Skill04");
     }
 
     private void Start()
@@ -135,8 +143,24 @@ public partial class Unit : Entity
         animationEvents.Events[AnimationState.Skill01].OnEnter.AddListener(OnSkillStart);
         animationEvents.Events[AnimationState.Skill01].OnEnd.AddListener(OnSkillEnd);
         animationEvents.Events[AnimationState.Skill01].OnOverHalf.AddListener(OnSkillOverHalf);
+        animationEvents.Events[AnimationState.Skill02].OnEnter.AddListener(OnSkillStart);
+        animationEvents.Events[AnimationState.Skill02].OnEnd.AddListener(OnSkillEnd);
+        animationEvents.Events[AnimationState.Skill02].OnOverHalf.AddListener(OnSkillOverHalf);
+        animationEvents.Events[AnimationState.Skill03].OnEnter.AddListener(OnSkillStart);
+        animationEvents.Events[AnimationState.Skill03].OnEnd.AddListener(OnSkillEnd);
+        animationEvents.Events[AnimationState.Skill03].OnOverHalf.AddListener(OnSkillOverHalf);
+        animationEvents.Events[AnimationState.Skill04].OnEnter.AddListener(OnSkillStart);
+        animationEvents.Events[AnimationState.Skill04].OnEnd.AddListener(OnSkillEnd);
+        animationEvents.Events[AnimationState.Skill04].OnOverHalf.AddListener(OnSkillOverHalf);
 
-        
+        for (int i=0;i<global::Skill.SkillCount;i++)
+        {
+            if(skills[i] == null)
+            {
+                skills[i] = new Skill();
+            }
+            skills[i].Initialize();
+        }
     }
 
     private void FixedUpdate()
@@ -150,6 +174,11 @@ public partial class Unit : Entity
         if (IsMove == false)
         {
             Decelerate();
+        }
+
+        for (int i = 0; i < global::Skill.SkillCount; i++)
+        {
+            skills[i].Update();
         }
 
         ProcessSkill();
@@ -225,7 +254,7 @@ public partial class Unit : Entity
         isGuard = true;
     }
 
-    public void Skill01()
+    public void Skill(int skillNum)
     {
         if (isDead) return;
         if (isGuard) return;
@@ -233,23 +262,16 @@ public partial class Unit : Entity
         if (isStiff) return;
         if (IsJump) return;
         if (!AttackFlag) return;
+        if (skills[skillNum].IsCooldown) return;
 
-        isSkill01 = true;
-    }
+        for (int i = 0; i < global::Skill.SkillCount; i++)
+        {
+            if (i == skillNum) continue;
+            if (skills[i].Active) return;
+        }
 
-    public void Skill02()
-    {
-
-    }
-
-    public void Skill03()
-    {
-
-    }
-
-    public void Skill04()
-    {
-
+        skills[skillNum].Activate();
+        moveFlag = false;
     }
 
     public void Knockback(Vector3 direction, float power)
@@ -290,7 +312,10 @@ public partial class Unit : Entity
             animator.SetTrigger(isStiffHash);
         }
         animator.SetBool(guardHash, isGuard);
-        animator.SetBool(skill01Hash, isSkill01);
+        animator.SetBool(skill01Hash, skills[0].Active);
+        animator.SetBool(skill02Hash, skills[1].Active);
+        animator.SetBool(skill03Hash, skills[2].Active);
+        animator.SetBool(skill04Hash, skills[3].Active);
         animator.SetInteger(comboHash, combo);
         animator.SetFloat(moveSpeedHash, currentSpeed);
         animator.SetFloat(velocityYHash, rigid.velocity.y);
@@ -375,58 +400,62 @@ public partial class Unit : Entity
     private void ProcessHit()
     {
         var hits = onHitProcedures.Count;
-        for (int i = 0; i < hits; i++)
+        if(isInvincible == false)
         {
-            var hit = onHitProcedures[i];
-            var toBeater = hit.Unit.transform.position - transform.position;
-            var toVictim = transform.position - hit.Unit.transform.position;
-            if (isGuard)
+            for (int i = 0; i < hits; i++)
             {
-                hit.Unit.Knockback(toBeater.normalized, 0.3f);
+                var hit = onHitProcedures[i];
+                var toBeater = hit.Unit.transform.position - transform.position;
+                var toVictim = transform.position - hit.Unit.transform.position;
+                if (isGuard)
+                {
+                    hit.Unit.Knockback(toBeater.normalized, 0.3f);
+                }
+                else
+                {
+                    switch (hit.AttackType)
+                    {
+                        case AttackType.Normal:
+                            isStiff = true;
+                            stiffnessTick = 0f;
+                            break;
+                        case AttackType.Down:
+                            downFlag = true;
+                            isDown = true;
+                            currentDirection = toBeater.normalized;
+                            currentDirection = new Vector3(currentDirection.x, 0f, 0f).normalized;
+                            spriteRenderer.flipX = IsLeft;
+                            break;
+                        default:
+                            break;
+                    }
+
+                    moveFlag = false;
+                    AttackFlag = false;
+
+                    var power = isDown ? 2f : 0.3f;
+                    this.knockbackDirection = toVictim.normalized;
+                    Knockback(knockbackDirection, power);
+
+                    if (gameObject.IsPlayer())
+                    {
+                        Cam.Instance.Shake();
+                    }
+
+                    materialProperty.OnHit = true;
+
+                    hp -= hit.Damage;
+                    if (hp <= 0f)
+                    {
+                        hp = 0f;
+                        isDead = true;
+                    }
+                }
+
+                StrikeEffect.Create(hit.HitPoint, toVictim.normalized);
             }
-            else
-            {
-                switch (hit.AttackType)
-                {
-                    case AttackType.Normal:
-                        isStiff = true;
-                        stiffnessTick = 0f;
-                        break;
-                    case AttackType.Down:
-                        downFlag = true;
-                        isDown = true;
-                        currentDirection = toBeater.normalized;
-                        currentDirection = new Vector3(currentDirection.x, 0f, 0f).normalized;
-                        spriteRenderer.flipX = IsLeft;
-                        break;
-                    default:
-                        break;
-                }
-
-                moveFlag = false;
-                AttackFlag = false;
-
-                var power = isDown ? 2f : 0.3f;
-                this.knockbackDirection = toVictim.normalized;
-                Knockback(knockbackDirection, power);
-
-                if(gameObject.IsPlayer())
-                {
-                    Cam.Instance.Shake();
-                }
-
-                materialProperty.OnHit = true;
-
-                hp -= hit.Damage;
-                if (hp <= 0f)
-                {
-                    hp = 0f;
-                    isDead = true;
-                }
-            }
-
-            StrikeEffect.Create(hit.HitPoint, toVictim.normalized);
         }
+        
         onHitProcedures.Clear();
 
         if (isStiff)
@@ -484,19 +513,38 @@ public partial class Unit : Entity
 
     public void OnSkillStart()
     {
-        ThunderBoltEffect.Create(transform.position, IsLeft ? Vector3.left : Vector3.right);
+        if(skills[0].Active)
+        {
+            ThunderBoltEffect.Create(transform.position, IsLeft ? Vector3.left : Vector3.right);
+        }
+        if(skills[2].Active)
+        {
+            isInvincible = true;
+            moveFlag = true;
+        }
     }
 
     public void OnSkillOverHalf()
     {
-        var curHitTarget = hitTarget;
-        curHitTarget.x *= IsLeft ? -1f : 1f;
-        HitBox.Create(this, transform.position + curHitTarget, AttackType.Down);
+        if (skills[0].Active || skills[1].Active)
+        {
+            var curHitTarget = hitTarget;
+            curHitTarget.x *= IsLeft ? -1f : 1f;
+            HitBox.Create(this, transform.position + curHitTarget, AttackType.Down);
+        }
     }
 
     public void OnSkillEnd()
     {
-        isSkill01 = false;
+        if (skills[2].Active)
+        {
+            isInvincible = false;
+        }
+        for (int i = 0; i < global::Skill.SkillCount; i++)
+        {
+            skills[i].Deactivate();
+        }
+        moveFlag = true;
     }
 
     public void OnAttackExit()
