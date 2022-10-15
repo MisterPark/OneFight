@@ -28,9 +28,13 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.C))
+        if (Input.GetKey(KeyCode.DownArrow))
         {
             unit.Guard();
+        }
+        if (Input.GetKey(KeyCode.C))
+        {
+            unit.Lift();
         }
         if (Input.GetKeyDown(KeyCode.X))
         {

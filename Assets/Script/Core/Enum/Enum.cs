@@ -15,6 +15,7 @@ public enum AnimationState : byte
     Skill02,
     Skill03,
     Skill04,
+    Lifting,
     End,
 }
 

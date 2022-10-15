@@ -14,6 +14,7 @@ public partial class Unit : Entity
     [SerializeField] private float jumpPower;
 
     [SerializeField] private Vector3 hitTarget;
+    [SerializeField] private Vector3 liftTarget;
 
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Animator animator;
@@ -34,6 +35,7 @@ public partial class Unit : Entity
     [SerializeField] private int skill02Hash;
     [SerializeField] private int skill03Hash;
     [SerializeField] private int skill04Hash;
+    [SerializeField] private int liftingHash;
 
     // Move
     private Vector3 prevDirection = Vector3.right;
@@ -97,6 +99,12 @@ public partial class Unit : Entity
     // Invincible
     private bool isInvincible = false;
 
+    // Lifting
+    private bool liftFlag = false;
+    private bool isLifting = false;
+    private LiftableObject liftableObject = null;
+    public Vector3 LiftTarget => liftTarget + transform.position;
+
     private void OnValidate()
     {
         if (spriteRenderer == null) spriteRenderer = GetComponent<SpriteRenderer>();
@@ -118,6 +126,7 @@ public partial class Unit : Entity
         skill02Hash = Animator.StringToHash("Skill02");
         skill03Hash = Animator.StringToHash("Skill03");
         skill04Hash = Animator.StringToHash("Skill04");
+        liftingHash = Animator.StringToHash("Lifting");
     }
 
     private void Start()
@@ -167,6 +176,7 @@ public partial class Unit : Entity
     {
         IsMove = false;
         isGuard = false;
+        liftFlag = false;
     }
 
     private void LateUpdate()
@@ -187,6 +197,8 @@ public partial class Unit : Entity
         ProcessHit();
         ProcessKnockback();
         ProcessAnimation();
+
+        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -197,6 +209,11 @@ public partial class Unit : Entity
     private void OnCollisionStay2D(Collision2D collision)
     {
         ProcessFloatingPlat(collision);
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        ProcessLift(collision);
     }
 
     public void Move(Vector3 direction)
@@ -282,6 +299,12 @@ public partial class Unit : Entity
         knockbackPower = power;
     }
 
+    public void Lift()
+    {
+        if (liftableObject == null) return;
+        liftableObject.SetUnit(this);
+    }
+
     public void AddForce(Vector3 force)
     {
         rigid.AddForce(force);
@@ -320,6 +343,7 @@ public partial class Unit : Entity
         animator.SetFloat(moveSpeedHash, currentSpeed);
         animator.SetFloat(velocityYHash, rigid.velocity.y);
         animator.SetBool(isJumpHash, IsJump);
+        animator.SetBool(liftingHash, isLifting);
     }
 
     private void ProcessJump()
@@ -451,7 +475,7 @@ public partial class Unit : Entity
                         isDead = true;
                     }
                 }
-
+                DeactivateAllSkills();
                 StrikeEffect.Create(hit.HitPoint, toVictim.normalized);
             }
         }
@@ -491,6 +515,21 @@ public partial class Unit : Entity
 
     private void ProcessSkill()
     {
+    }
+
+    private void ProcessLift(Collider2D collision)
+    {
+        int targetMask = collision.gameObject.GetLayerMask();
+        int liftMask = LayerMask.GetMask("LiftableObject");
+        if ((targetMask & liftMask) != 0)
+        {
+            var lift = collision.gameObject.GetComponent<LiftableObject>();
+            if (lift != null)
+            {
+                liftFlag = true;
+                liftableObject = lift;
+            }
+        }
     }
 
     public void OnAttackStart()
@@ -540,10 +579,7 @@ public partial class Unit : Entity
         {
             isInvincible = false;
         }
-        for (int i = 0; i < global::Skill.SkillCount; i++)
-        {
-            skills[i].Deactivate();
-        }
+        DeactivateAllSkills();
         moveFlag = true;
     }
 
@@ -564,6 +600,16 @@ public partial class Unit : Entity
         AttackFlag = true;
     }
 
+    public void OnLiftStart()
+    {
+
+    }
+
+    public void OnLiftExit()
+    {
+        isLifting = false;
+    }
+
     public void OnHit(Vector3 hitPoint, float damage, Unit beater, AttackType attackType)
     {
         var procedure = new OnHitProcedure();
@@ -572,5 +618,13 @@ public partial class Unit : Entity
         procedure.AttackType = attackType;
         procedure.Unit = beater;
         onHitProcedures.Add(procedure);
+    }
+
+    public void DeactivateAllSkills()
+    {
+        for (int i = 0; i < global::Skill.SkillCount; i++)
+        {
+            skills[i].Deactivate();
+        }
     }
 }
