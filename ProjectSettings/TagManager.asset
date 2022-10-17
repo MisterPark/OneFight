@@ -41,3 +41,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: map3
+    uniqueID: 28859537
+    locked: 0
+  - name: map2
+    uniqueID: 1201192235
+    locked: 0
+  - name: map1
+    uniqueID: 3325591147
+    locked: 0
+  - name: map0
+    uniqueID: 2671149923
+    locked: 0
